@@ -1,7 +1,10 @@
 //const qrcode = window.qrcode;
-import { test } from "./context/model";
+//import { test } from "./context/model";
 //array for the scanned codes
 const qrCodeResults = []; 
+
+// import { x } from "./demo_db_conn.js";
+// alert(x); 
 
 const video = document.createElement("video");
 const canvasElement = document.getElementById("qr-canvas");
@@ -16,6 +19,7 @@ const txt1 = document.getElementById("txt1");
 let scanning = true;
 
 qrcode.callback = res => {
+  console.log("here")
   if (res) {
 
     btnData.hidden = false; 
@@ -78,7 +82,7 @@ function scan() {
 }
 
 btnData.onclick = () =>{
-  console.log("qrCodeResults length is : " + qrCodeResults.length);
+  //console.log("qrCodeResults length is : " + qrCodeResults.length);
   for(let i = 0; i < qrCodeResults.length; i++){
     console.log(qrCodeResults[i]);
   }
