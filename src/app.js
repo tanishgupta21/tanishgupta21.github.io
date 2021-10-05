@@ -1,10 +1,7 @@
-//const qrcode = window.qrcode;
-//import { test } from "./context/model";
-//array for the scanned codes
-const qrCodeResults = []; 
+//alert("javascript is working!")
 
-// import { x } from "./demo_db_conn.js";
-// alert(x); 
+const qrCodeResults = [];  // array for the scanned codes
+const testButton = document.getElementById("test");
 
 const video = document.createElement("video");
 const canvasElement = document.getElementById("qr-canvas");
@@ -19,14 +16,28 @@ const txt1 = document.getElementById("txt1");
 let scanning = true;
 
 qrcode.callback = res => {
-  console.log("here")
+  //console.log("here")
   if (res) {
 
     btnData.hidden = false; 
-    outputData.innerText = res;
+    //outputData.innerText = res;
     scanning = false;
-    txt1.innerHTML = "Product details "; 
-    
+    fetch("http://127.0.0.1:8090/test/" + res)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("there was an error")
+      }
+      return response.json()
+    })
+    .then((response) => {
+      outputData.innerHTML = `${response[0].Name}`;
+
+      txt1.innerHTML = `
+      Name : ${response[0].Name}
+      Quantity : ${response[0].Quantity}
+      Location : ${response[0].Location}`;
+    });
+    //txt1.innerHTML = "Product details "; 
     qrResult.hidden = false;
     //console.log(outputData.innerHTML); 
     qrCodeResults.push(outputData.innerHTML); 
@@ -48,7 +59,8 @@ qrcode.callback = res => {
   }
 };
 
-btnScanQR.onclick = () => {
+function scanner() {
+  alert("Hey this is working!!")
   navigator.mediaDevices
     .getUserMedia({ video: { facingMode: "environment" } })
     .then(function(stream) {
@@ -64,6 +76,26 @@ btnScanQR.onclick = () => {
       scan();
     });
 };
+
+
+
+btnScanQR.addEventListener("click", function () {
+  alert("Hey this is working!!")
+  navigator.mediaDevices
+    .getUserMedia({ video: { facingMode: "environment" } })
+    .then(function(stream) {
+      scanning = true;
+      qrResult.hidden = true;
+      btnScanQR.hidden = true;
+      
+      canvasElement.hidden = false;
+      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video.srcObject = stream;
+      video.play();
+      tick();
+      scan();
+    });
+});
 
 function tick() {
   canvasElement.height = video.videoHeight;

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Max Advanced Brakes</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+  </head>
+
+  <body>
+    <div id="container">
+      <h1>QR Code Scanner</h1>
+      <button id="btn-scan-qr"> <!--entry thing the portal -->
+        <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg">
+      </button>
+
+
+      <canvas hidden="" id="qr-canvas"></canvas>
+      <div id="qr-result" hidden="">
+        <b>Data:</b> <span id="outputData"></span>
+      </div>
+      <br>
+      <button id="btnData" hidden=""> Show Data </button>
+      <br><br>      
+      <textarea id="txt1" rows="20" cols="50" placeholder="  Product details will appear here..."></textarea>
+    </div>
+    <script src="./src/app.js" type="application/javascript"></script>
+    </body>
+</html>
+
+<!-- 
+
+    - html will make a call to app.js 
+    - app.js will make a call to server.js 
+    - server.js will make a call to the mysql database 
+
+    - and that will probably show results in the html page 
+
+ -->

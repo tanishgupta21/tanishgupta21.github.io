@@ -135,48 +135,6 @@
 
     </script>
 
-<?php 
-  
-  
-
-  
-
-
-
-    //       $google2 = "Google"; 
-    //       //
-    //       //echo "phpVar = '" . $google2 . "';"; 
-
-    // $domocument = new DOMDocument();
-    // $oututData = $domDocument->getElementById('outputData').innerHTML;            
-    // $google = "Google"; 
-    // echo "google = " . $google . "<br>"; 
-    //  echo "outputdata = " . $outputData; 
-    // echo $outputData;
-    // if (strcasecmp($outputData, $google) == 0){
-    //   $sql = "SELECT * FROM Person WHERE PersonID='1'"; 
-    //   $result = $conn->query($sql); 
-    //   if($result->num_rows > 0) {
-    //     //while($row = $result->fetch_assoc()) {
-    //       echo "txt1.innerHTML = '" . $google ."';";
-    //     //}
-    //   }else{
-    //   echo "0 results"; 
-    //   }
-    // }
-    
-    //"id: ". $row["PersonID"]. " - Name: ". $row["FirstName"]. " " . $row["LastName"] . ""
-    //echo "txt1.innerHTML = '" . googleData() ."';"; 
-
-
-
-
-    function googleData() {
-   
-    }
-
-    $conn->close();
-  ?>
   </body>
 </html>
 
