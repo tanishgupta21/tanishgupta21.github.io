@@ -14,16 +14,14 @@
       <button id="btn-scan-qr"> <!--entry thing the portal -->
         <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg">
       </button>
-
-
-      <canvas hidden="" id="qr-canvas"></canvas>
+    <canvas hidden="" id="qr-canvas"></canvas>
       <div id="qr-result" hidden="">
-        <b>Data:</b> <span id="outputData"></span>
+        <b>Product:</b> <span id="outputData"></span>
       </div>
       <br>
       <button id="btnData" hidden=""> Show Data </button>
       <br><br>      
-      <textarea id="txt1" rows="20" cols="50" placeholder="  Product details will appear here..."></textarea>
+      <textarea id="txt1" rows="20" cols="50" placeholder="  Product details will appear here..." disabled></textarea>
     </div>
     <script src="./src/app.js" type="application/javascript"></script>
     </body>
@@ -37,4 +35,16 @@
 
     - and that will probably show results in the html page 
 
+
+    - everything works now .
+    - app works great. 
+     - it scans codes 
+    - connects to the database 
+    - gets the results 
+    - only thing left is: fielt test. 
+
+    - we need to secure the localhost or host it on a secure server, in order to get the camera permissions to work. 
+    - ask john for the android tablet, and see if that works 
+     - unable to change camera permissions; suspected reason: unable to secure the server where the site is hosted 
+     
  -->

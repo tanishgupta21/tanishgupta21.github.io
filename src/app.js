@@ -1,5 +1,3 @@
-//alert("javascript is working!")
-
 const qrCodeResults = [];  // array for the scanned codes
 const testButton = document.getElementById("test");
 
@@ -22,7 +20,7 @@ qrcode.callback = res => {
     btnData.hidden = false; 
     //outputData.innerText = res;
     scanning = false;
-    fetch("http://127.0.0.1:8090/test/" + res)
+    fetch("http://192.168.0.217:8090/test/" + res)
     .then((response) => {
       if (!response.ok) {
         throw new Error("there was an error")
@@ -33,7 +31,7 @@ qrcode.callback = res => {
       outputData.innerHTML = `${response[0].Name}`;
 
       txt1.innerHTML = `
-      Name : ${response[0].Name}
+      Product ID : ${response[0].ProductID}
       Quantity : ${response[0].Quantity}
       Location : ${response[0].Location}`;
     });
@@ -60,7 +58,7 @@ qrcode.callback = res => {
 };
 
 function scanner() {
-  alert("Hey this is working!!")
+  //alert("Hey this is working!!")
   navigator.mediaDevices
     .getUserMedia({ video: { facingMode: "environment" } })
     .then(function(stream) {
@@ -153,3 +151,6 @@ btnData.onclick = () =>{
  // improving the senstivity of the scanner 
 // making the scanner better, to make it able to scan even at different angles
 
+// we got it working on the github server
+// the issue is with the server
+// have to make it secure

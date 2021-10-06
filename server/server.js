@@ -11,12 +11,12 @@ const app = express();
 
 const HTTP_PORT = process.env.PORT || 8090;
 const HTTPS_PORT = 4433;
-const SSL_KEY_FILE = "server.key";
-const SSL_CRT_FILE = "server.crt";
+const SSL_KEY_FILE = "localhost.decrypted.key";
+const SSL_CRT_FILE = "localhost.crt";
 
 const http_options = {
-    key: fs.readFileSync(__dirname + "/" + SSL_KEY_FILE),
-    cert: fs.readFileSync(__dirname + "/" + SSL_CRT_FILE)
+    key: fs.readFileSync(__dirname + "/cert/CA/localhost/" + SSL_KEY_FILE),
+    cert: fs.readFileSync(__dirname + "/cert/CA/localhost/" + SSL_CRT_FILE)
 }
 
 const mode = "DEV";
@@ -67,7 +67,7 @@ router.get("/test/:id", (req, res) => {
     })
 });
 
-//http.createServer(app).listen(HTTP_PORT, onHttpStart);
-//https.createServer(http_options, app).listen(HTTPS_PORT, onHttpsStart);
+http.createServer(app).listen(HTTP_PORT, onHttpStart);
+https.createServer(http_options, app).listen(HTTPS_PORT, onHttpsStart);
 
-app.listen(HTTP_PORT, onHttpStart);
+//app.listen(HTTP_PORT, onHttpStart);
