@@ -78,7 +78,7 @@ function scanner() {
 
 
 btnScanQR.addEventListener("click", function () {
-  alert("Hey this is working!!")
+  //alert("Hey this is working!!")
   navigator.mediaDevices
     .getUserMedia({ video: { facingMode: "environment" } })
     .then(function(stream) {
@@ -129,7 +129,7 @@ btnData.onclick = () =>{
   - only thing left is to connect to the database and get the results from the database abotut he products and display  
 
   
-*/
+
 
 //keep a back log of all the qr codes scanned
 //create a table with user id
@@ -154,3 +154,5 @@ btnData.onclick = () =>{
 // we got it working on the github server
 // the issue is with the server
 // have to make it secure
+
+*/
