@@ -52,8 +52,36 @@ html {
     color : black;
     /* color : #fff;  */
     background-color: white;
+
   }
 /*#lbl1 {
     color: white; 
   } */
   
+  #prodScan {
+    font-size: xx-large; 
+    text-align: center;
+  }
+
+  #locScan {
+    font-size: xx-large; 
+    text-align: center; 
+  }
+
+  #btn2 {
+    width: 50%; 
+    padding: 20px; 
+    text-align: center;
+    font-size: large;
+  }
+
+  #btn3 {
+    width: 49%; 
+    padding: 20px; 
+    text-align: center;
+    font-size: large;
+  }
+
+  #btn-group {
+    float: left;
+  }

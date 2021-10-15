@@ -1,0 +1,78 @@
+/*
+
+  requirements: 
+   - ability to scan at any angle 
+   - have an history - store qr codes, the time they were scanned, the number of times they were scanned - done 
+    - history is provided in the console for now 
+   
+  - only thing left is to connect to the database and get the results from the database abotut he products and display  
+
+  
+
+
+//keep a back log of all the qr codes scanned
+//create a table with user id
+ //store the item no 
+ //item location 
+ //time/date it was stored 
+ //who stored it 
+ //all in the backlog, only the admin has the control 
+//connect the database to the database 
+// make it more cool 
+
+
+// data output required: 
+ // from multiple tables
+ // using joins 
+ // display on th screen 
+ // 
+
+ // improving the senstivity of the scanner 
+// making the scanner better, to make it able to scan even at different angles
+
+// we got it working on the github server
+// the issue is with the server
+// have to make it secure
+
+*/
+
+
+
+<!--
+
+    - html will make a call to app.js 
+    - app.js will make a call to server.js 
+    - server.js will make a call to the mysql database 
+
+    - and that will probably show results in the html page 
+
+
+    - everything works now .
+    - app works great. 
+     - it scans codes 
+    - connects to the database 
+    - gets the results 
+    - only thing left is: fielt test. 
+
+    - we need to secure the localhost or host it on a secure server, in order to get the camera permissions to work. 
+    - ask john for the android tablet, and see if that works 
+     - unable to change camera permissions; suspected reason: unable to secure the server where the site is hosted 
+
+     - well, the thing that is left is to get the database. 
+      - test the whole app on the servers 
+      - and see if it works. 
+
+    - about scanner
+     - need to make it wrinkle friendly 
+     - it cannot scan the wrinkled or curved qr codes properly 
+     - on github server, everything is running fine, but the databsae connection 
+      - we are unable to get the details from database on the server side 
+      - but the javascript thing is working 
+      - there's beer in the fridge 
+     
+
+      - we need a secure server to run it. 
+      - index runs on a secure server through github, but to run the server.js, we need a secure database. 
+       - let's encrypt doesn't work, cause it requires a valid domain 
+       - we can sub-domain the original domain site, and work from there. 
+ -->

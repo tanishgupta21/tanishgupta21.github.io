@@ -6,6 +6,7 @@ const fs = require("fs");
 const http = require("http");
 const https = require("https");
 const { dirname } = require("path");
+const bcrypt = require("bcryptjs");
 const app = express();
 
 
@@ -56,18 +57,19 @@ app.use(router);
 router.get("/test/:id", (req, res) => {
     console.log(req.params.id);
 
-    let admintxt = '';
-    if (req.params.id !== undefined) {
-        admintxt = " WHERE ProductID = '" + req.params.id + "'";
-    }
-
-    con.query("SELECT * FROM Product" + admintxt, function(err, result, fields) {
+    con.query("SELECT * FROM Product WHERE ProductID = '" + req.params.id + "'", function(err, result, fields) {
         if (err) throw err; 
         res.status(200).send(result);   
     })
 });
 
-http.createServer(app).listen(HTTP_PORT, onHttpStart);
-https.createServer(http_options, app).listen(HTTPS_PORT, onHttpsStart);
+//http.createServer(app).listen(HTTP_PORT, onHttpStart);
+//https.createServer(http_options, app).listen(HTTPS_PORT, onHttpsStart);
 
-//app.listen(HTTP_PORT, onHttpStart);
+app.listen(HTTP_PORT, onHttpStart);
+
+
+// SELECT * FROM Product WHERE Location = ""; 
+
+
+

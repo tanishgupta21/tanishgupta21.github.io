@@ -1,50 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Max Advanced Brakes</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
-    <link rel="stylesheet" href="src/style.css" />
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
-  </head>
 
-  <body>
-    <div id="container">
-      <h1>QR Code Scanner</h1>
-      <button id="btn-scan-qr"> <!--entry thing the portal -->
-        <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg">
-      </button>
+<head>
+  <title>Max Advanced Brakes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <link rel="stylesheet" href="src/style.css" />
+  <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <h1>Cycle Count</h1>
+    <textarea id="prodScan" rows="2" cols="15" font-size="30px" placeholder="Product" onkeydown="getData()"
+      autofocus></textarea>
+    <textarea id="locScan" rows="2" cols="15" placeholder="Location"></textarea>
+
     <canvas hidden="" id="qr-canvas"></canvas>
-      <div id="qr-result" hidden="">
-        <b>Product:</b> <span id="outputData"></span>
-      </div>
-      <br>
-      <button id="btnData" hidden=""> Show Data </button>
-      <br><br>      
-      <textarea id="txt1" rows="20" cols="50" placeholder="  Product details will appear here..." disabled></textarea>
+    <div id="qr-result" hidden="">
+      <b>Product:</b> <span id="outputData"></span>
     </div>
-    <script src="./src/app.js" type="application/javascript"></script>
-    </body>
+    <br>
+    <button id="btnData" hidden=""> Show Data </button>
+    <br><br>
+    <textarea id="txt1" rows="20" cols="50" placeholder="  Product details will appear here..." disabled></textarea>
+  </div>
+  <script src="./src/app.js" type="application/javascript"></script>
+  <div class="btn-group">
+    <button id="btn2" onclick="postData()"> Post </button>
+    <button id="btn3" onclick="createTxtArea()"> Create Text Area </button>
+  </div>
+</body>
+
 </html>
 
-<!-- 
-
-    - html will make a call to app.js 
-    - app.js will make a call to server.js 
-    - server.js will make a call to the mysql database 
-
-    - and that will probably show results in the html page 
 
 
-    - everything works now .
-    - app works great. 
-     - it scans codes 
-    - connects to the database 
-    - gets the results 
-    - only thing left is: fielt test. 
 
-    - we need to secure the localhost or host it on a secure server, in order to get the camera permissions to work. 
-    - ask john for the android tablet, and see if that works 
-     - unable to change camera permissions; suspected reason: unable to secure the server where the site is hosted 
-     
- -->
+
+
+
+
+
+
+
+
+
+
+<!--
+  get the curernt of the database or bin 
+  reqd info 
+
+  post the actual shelf amount
+   update the status of scanned from 0 to 1 
+
+  
+  Locations: 
+   location qr scanned 
+    how much it is completed 
+    out of the whole aisle 
+
+  two modules : products and locations
+   
+
+     <button id="btn-scan-qr"> 
+        <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg">
+      </button> -->

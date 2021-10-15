@@ -1,0 +1,137 @@
+{
+    "status": "OK",
+    "ex": {
+        "id": 1867,
+        "num": "R31308ONZ",
+        "des": "Premium OE Rotor",
+        "variantid": 4,
+        "typeid": 1,
+        "vendorid": null,
+        "cost": null,
+        "deflocid": null,
+        "specialid": null,
+        "basenum": null,
+        "created": "2020-06-29 17:39:00",
+        "mavg": 0,
+        "deflocal": null,
+        "active": 1,
+        "weight_lbs": null,
+        "origin": null,
+        "costid": 1251,
+        "name": null,
+        "lgid": null
+    },
+    "inter": [
+        {
+            "inter": "ONZ0130",
+            "des": "MAX",
+            "partid": 1867
+        }
+    ],
+    "upc": [
+        {
+            "upc": "665083110574"
+        },
+        {
+            "upc": "702669002240"
+        },
+        {
+            "upc": "809225032175"
+        }
+    ],
+    "loc": [
+        {
+            "id": 51466,
+            "qty": 0,
+            "loc": "2434 : A11 : 09 : 3R",
+            "lg": "LOCAL PURCHASE"
+        },
+        {
+            "id": 9213,
+            "qty": 16,
+            "loc": "2434 : A11 : 09 : 3R",
+            "lg": "WAREHOUSE"
+        }
+    ],
+    "landed": {
+        "costusd": "8.59",
+        "costcad": "10.31"
+    },
+    "partcat": false,
+    "fifo": {
+        "id": 1251,
+        "created": "2021-06-08 19:58:26",
+        "poitemid": null,
+        "updated": "2021-10-08 07:46:08",
+        "partid": 1867,
+        "qty": 24,
+        "qty_left": 16,
+        "finished": null,
+        "cost_cad_part": null,
+        "cost_cad_freight": "0.00",
+        "cost_cad_customs": "0.00",
+        "cost_cad_final_per": "11.16",
+        "cost_usd_final_per": "8.59",
+        "container": null,
+        "code": null,
+        "uploaded": null
+    },
+    "fifolist": [
+        {
+            "id": 1251,
+            "created": "2021-06-08 19:58:26",
+            "poitemid": null,
+            "updated": "2021-10-08 07:46:08",
+            "partid": 1867,
+            "qty": 24,
+            "qty_left": 16,
+            "finished": null,
+            "cost_cad_part": null,
+            "cost_cad_freight": "0.00",
+            "cost_cad_customs": "0.00",
+            "cost_cad_final_per": "11.16",
+            "cost_usd_final_per": "8.59",
+            "container": null,
+            "code": null,
+            "uploaded": null
+        }
+    ],
+    "cycle": [
+        {
+            "cycled": 0,
+            "partid": 1867,
+            "num": "R31308ONZ",
+            "inter": "",
+            "lgid": 1,
+            "qty": 16,
+            "locationid": 1445
+        },
+        {
+            "cycled": 0,
+            "partid": 1867,
+            "num": "R31308ONZ",
+            "inter": "",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 5080
+        },
+        {
+            "cycled": 0,
+            "partid": 1867,
+            "num": "R31308ONZ",
+            "inter": "",
+            "lgid": 1,
+            "qty": 16,
+            "locationid": 1445
+        },
+        {
+            "cycled": 0,
+            "partid": 1867,
+            "num": "R31308ONZ",
+            "inter": "",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 5080
+        }
+    ]
+}
