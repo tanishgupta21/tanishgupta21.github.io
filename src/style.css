@@ -8,44 +8,19 @@ html {
     height: 100%;
     background: black;
     margin: 0;
-    color: white;
+    color:whitesmoke;
   }
   
   h1 {
-    color: white;
+    /* color: white; */
     margin: 0;
     padding: 15px;
+    font-size: 350%;
   }
   
   #container {
     text-align: center;
     margin: 0;
-  }
-  
-  #qr-canvas {
-    margin: auto;
-    width: calc(100% - 20px);
-    max-width: 400px;
-  }
-  
-  #btn-scan-qr {
-    cursor: pointer;
-  }
-  
-  #btn-scan-qr img {
-    height: 10em;
-    padding: 15px;
-    margin: 15px;
-    background: white;
-  }
-  
-  #qr-result {
-    font-size: 1.2em;
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 700px;
-    background-color: white;
-    color : black; 
   }
 
   #txt1 {
@@ -54,10 +29,7 @@ html {
     background-color: white;
 
   }
-/*#lbl1 {
-    color: white; 
-  } */
-  
+
   #prodScan {
     font-size: xx-large; 
     text-align: center;
@@ -69,19 +41,28 @@ html {
   }
 
   #btn2 {
-    width: 50%; 
+    width: 100%; 
     padding: 20px; 
     text-align: center;
-    font-size: large;
+    
   }
 
-  #btn3 {
-    width: 49%; 
-    padding: 20px; 
+  #outputDiv {
+    font-size: 30px;
+    align-items: center;
     text-align: center;
-    font-size: large;
+    font-weight: bold;
+    background-color: grey;
+    padding: 10px;
+    color : blue; 
   }
 
-  #btn-group {
-    float: left;
+  input {
+    text-align: center;
+  }
+
+  button {
+    font-size: 25px;    
+    padding-left: 30px; 
+    padding-right: 30px; 
   }

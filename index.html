@@ -11,24 +11,19 @@
 
 <body>
   <div id="container">
-    <h1>Cycle Count</h1>
-    <textarea id="prodScan" rows="2" cols="15" font-size="30px" placeholder="Product" onkeydown="getData()"
-      autofocus></textarea>
-    <textarea id="locScan" rows="2" cols="15" placeholder="Location"></textarea>
-
-    <canvas hidden="" id="qr-canvas"></canvas>
-    <div id="qr-result" hidden="">
-      <b>Product:</b> <span id="outputData"></span>
-    </div>
-    <br>
-    <button id="btnData" hidden=""> Show Data </button>
-    <br><br>
-    <textarea id="txt1" rows="20" cols="50" placeholder="  Product details will appear here..." disabled></textarea>
+    <h1> Cycle Count </h1>
+    <input id="prodScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Product" onkeyup="getData()" onfocus="this.value=''" autofocus />
+    <input id="locScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Location" onkeyup="getData2()" onfocus="this.value=''"/>
   </div>
+
+  <br><br>
+
   <script src="./src/app.js" type="application/javascript"></script>
+
+  <div id="outputDiv"></div>
+  <br><br>
   <div class="btn-group">
-    <button id="btn2" onclick="postData()"> Post </button>
-    <button id="btn3" onclick="createTxtArea()"> Create Text Area </button>
+    <button id="btn2" onclick="clearData()"> Clear </button>
   </div>
 </body>
 
@@ -37,7 +32,12 @@
 
 
 
+<!-- we can make a single button or multiple buttons for each of them 
+depening upon the need 
+single button is much easier navigate
+multiple buttons allow a bit more flexibility 
 
+-->
 
 
 

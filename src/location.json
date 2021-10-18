@@ -1,0 +1,96 @@
+{
+    "id": 1003,
+    "name": "1992 : A08 : 05 : 6L",
+    "parts": [
+        {
+            "cycled": 0,
+            "partid": 6426,
+            "num": "R54132SCB",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 4638
+        },
+        {
+            "cycled": 0,
+            "partid": 6426,
+            "num": "R54132SCB",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 4638
+        },
+        {
+            "cycled": 0,
+            "partid": 6426,
+            "num": "R54132SCB",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 4638
+        },
+        {
+            "cycled": 0,
+            "partid": 1553,
+            "num": "R31245SCB",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 4638
+        },
+        {
+            "cycled": 0,
+            "partid": 1553,
+            "num": "R31245SCB",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 4638
+        },
+        {
+            "cycled": 0,
+            "partid": 1553,
+            "num": "R31245SCB",
+            "lgid": 1,
+            "qty": 0,
+            "locationid": 1003
+        },
+        {
+            "cycled": 0,
+            "partid": 1553,
+            "num": "R31245SCB",
+            "lgid": 1,
+            "qty": 0,
+            "locationid": 1003
+        },
+        {
+            "cycled": 0,
+            "partid": 6426,
+            "num": "R54132SCB",
+            "lgid": 1,
+            "qty": 24,
+            "locationid": 1003
+        },
+        {
+            "cycled": 0,
+            "partid": 6426,
+            "num": "R54132SCB",
+            "lgid": 1,
+            "qty": 24,
+            "locationid": 1003
+        },
+        {
+            "cycled": 0,
+            "partid": 6426,
+            "num": "R54132SCB",
+            "lgid": 1,
+            "qty": 24,
+            "locationid": 1003
+        }
+    ],
+    "locs": [
+        {
+            "id": 1003,
+            "lgid": 1
+        },
+        {
+            "id": 4638,
+            "lgid": 3
+        }
+    ]
+}
