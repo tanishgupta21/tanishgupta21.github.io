@@ -30,21 +30,9 @@ html {
 
   }
 
-  #prodScan {
+  #idScan {
     font-size: xx-large; 
     text-align: center;
-  }
-
-  #locScan {
-    font-size: xx-large; 
-    text-align: center; 
-  }
-
-  #btn2 {
-    width: 100%; 
-    padding: 20px; 
-    text-align: center;
-    
   }
 
   #outputDiv {
@@ -59,10 +47,22 @@ html {
 
   input {
     text-align: center;
+    size: 5px;
   }
 
   button {
     font-size: 25px;    
     padding-left: 30px; 
     padding-right: 30px; 
+    width: 100%; 
+    padding: 20px; 
+    text-align: center;    
+  }
+
+  label {
+    width: 200px;
+  }
+
+  #locid {
+    width: 15px;
   }

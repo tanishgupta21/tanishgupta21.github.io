@@ -1,208 +1,259 @@
-//alert("Welcome!!!")
-const prodScan = document.getElementById("prodScan");
-const locScan = document.getElementById("locScan");
+
+var scans = [];
+var numProds = 0;
+var numLocs = 0;
+var scannedId;
+const idScan = document.getElementById("idScan");
+const labelHeading = document.getElementById("labelHeading");
+
+//************************************************************************************************************************************************************************************* */
+//************************************************************************************************************************************************************************************* */
+
+const firstfunction = function () {
+  var text = idScan.value;
+  var varCheck = /[a-zA-z]/g;
+  if (varCheck.test(text)) {
+    //console.log("test: alphabets are present ");
+    getPartFunctions();
+  }
+  else {
+    //console.log("test: no alphabets are present");
+    getLocationFunctions();
+  }
 
 
-function getData() {    
+  //url = "https://namnor.club/p.php?" + text;
+
+  // fetch(url).then(function (response) {
+  //   if (response.ok) {
+  //     return response.json();
+  //   } else {
+  //     return Promise.reject(response);
+  //   }
+  // }).then(function (text) {
+  //   scannedId = text;
+  //   getLocationFunctions();
+  // }).then(function (response) {
+  //   if (response.ok) {
+  //     return response.json();
+  //   } else {
+  //     return Promise.reject(response);
+  //   }
+  // }).then(function () {
+  //   scannedId = text;
+  //   getPartFunctions();
+
+  // }).catch(function (error) {
+  //   console.warn(error);
+  // })
+}
+
+
+//************************************************************************************************************************************************************************************* */
+//    FIELD UPDATE WHEN SCAN PRODUCT ID 
+//************************************************************************************************************************************************************************************* */
+
+
+const getPartFunctions = function () {
+  let text = idScan.value;
+  localStorage.setItem("id", text);
+  getLocations(text);
+  retrieveProdId();
+}
+
+
+function getLocations(abc) {
   let txt1 = document.getElementById("outputDiv");
-  url = "https://namor.club/p.php?" + prodScan.value;
-  
+  url = "https://namor.club/p.php?" + abc;
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error("An error occured");
       return response.json();
     })
-    .then((response) => {      
+    .then((response) => {
       txt1.innerHTML = "";
-      txt1.innerHTML = "<label style='float:left'> Location ID </label> <label style='float:right'> Location Quantity </label><br><br>";
+      txt1.innerHTML += "<button onclick='partUpdate()'> Update </button><br><br>";
+      txt1.innerHTML += "<label style='float:left'> Location ID </label> <label style='float:none'> Current Quantity </label> <label style='float:right'> New Quantity </label><br><br>";
       var i = 0;
+      numProds = 0;
       while (response.loc[i].id != null) {
-        txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.loc[i].id + "' disabled style='font-size:25px; float:left; color:black'>";
-        txt1.innerHTML += "<button onclick='handleUpdate(locid" + i + ", locqty" + i + ")' align-items='center'>Update</button>"
-        txt1.innerHTML += "<input id='locqty" + i + "' type='number' value='" + response.loc[i].qty + "' style='font-size:25px; float:right;'><br><br>";
+        txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled style='font-size:25px; float:left; color:black' size='15'>";
+        txt1.innerHTML += "<input id='partid" + i + "' type='text' value='" + response.ex.id + "' disabled style='font-size:25px; float:left; color:black' hidden>";
+        txt1.innerHTML += "<input id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' style='font-size:25px; float:none;' disabled size='15'>";
+        txt1.innerHTML += "<input id='newqty" + i + "' type='number' style='font-size:25px; float:right;' size='15'><br><br>";
+        numProds++;
         i++;
+        clearField();
       }
+
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
     });
-
-    document.getElementById('prodScan').focus(); 
 }
 
-function getData2() {    
-  let txt1 = document.getElementById("outputDiv");
-  url = "https://namor.club/p.php?loc=" + locScan.value;
-  
+
+const retrieveProdId = function () {
+  var text = localStorage.getItem("id");
+  labelHeading.innerHTML = "Part ID : " + text;
+}
+
+
+//************************************************************************************************************************************************************************************* */
+//     FIELD UPDATE WHEN SCAN LOCATION ID 
+//************************************************************************************************************************************************************************************* */
+
+
+const getLocationFunctions = function () {
+  let text = idScan.value;
+  //console.log("text in getLocationFunctions: " + text);
+  localStorage.setItem("id2", text);
+  getParts(text);
+  retrieveLocId();
+}
+
+
+function getParts(abc) {
+  let txt1 = document.getElementById("outputDiv");  
+  url = "https://namor.club/p.php?loc=" + abc;
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error("An error occured");
       return response.json();
     })
-    .then((response) => {      
+    .then((response) => {
       txt1.innerHTML = "";
-      locScan.value = response.name; 
-      txt1.innerHTML = "<label style='float:left'> Product ID </label> <label style='float:right'> Quantity </label><br><br>";
+      txt1.innerHTML += "<button onclick='locationUpdate()'> Update </button><br><br>"
+      txt1.innerHTML += "<label style='float:left'> Product ID </label> <label style='float:none'> Current Quantity </label> <label style='float:right'> Quantity </label><br><br>";
       var i = 0;
+      numLocs = 0;
       while (response.parts[i].partid != null) {
-        txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.parts[i].partid + "' disabled style='font-size:25px; float:left; color:black'>";
-        txt1.innerHTML += "<button onclick='handleUpdate(locid" + i + ", locqty" + i + ")' align-items='center'>Update</button>"
-        txt1.innerHTML += "<input id='locqty" + i + "' type='number' value='" + response.parts[i].qty + "' style='font-size:25px; float:right;'><br><br>";
+        txt1.innerHTML += "<input id='partid" + i + "' type='text' value='" + response.parts[i].num + "' disabled style='font-size:25px; float:left; color:black' size='15'>";
+        txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.id + "' disabled style='font-size:25px; float:left; color:black' hidden>";
+        txt1.innerHTML += "<input id='partqty" + i + "' type='text' value='" + response.parts[i].qty + "' style='font-size:25px; float:none;' size='15' disabled>";
+        txt1.innerHTML += "<input id='newqty" + i + "' type='number' style='font-size:25px; float:right;' size='15'><br><br>";
+        numLocs++;
         i++;
+        clearField();
       }
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
     });
 
 }
 
-function handleUpdate(id, locqty) {
-  let locationid = id.value;
-  let locationqty = locqty.value;
-  console.log(locationid, locationqty)
-  const url = "https://namor.club/p.php";
-  let data = {
-    locid: locationid,
-    partid: 'partid',
-    rawloc: 'rawlocid',
-    rawpart: 'rawpartid',
-    ip: 'ip',
-    user: 'user'
+
+const retrieveLocId = function () {
+  var text = localStorage.getItem("id2");
+  labelHeading.innerHTML = "Location ID : " + text;
+}
+
+
+
+//************************************************************************************************************************************************************************************* */
+//    PARTS UPDATE BUTTON
+//************************************************************************************************************************************************************************************* */
+
+
+function partUpdate() {
+  var j = 0;
+  while (j < numProds) {
+    var locationid = document.getElementById('locid' + j).value;
+    var partid = document.getElementById('partid' + j).value;
+    var newqty = document.getElementById('newqty' + j).value;
+    console.log("locid: " + locationid);
+    console.log("partid: " + partid);
+
+    const url = "https://namor.club/p.php";
+    let data = {
+      locid: locationid,
+      partid: partid,
+      rawloc: 0,
+      rawpart: newqty,
+      ip: 0,
+      user: 'test'
+    }
+
+    let fetchData = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: new Headers()
+    }
+
+    console.log(fetchData.body[0])
+
+    fetch(url, fetchData)
+      .catch((error) => {
+        console.log(error);
+      })
+
+
+    j++;
   }
 
 }
 
-function postData() {
-  const url = "https://namor.club/p.php";
+//************************************************************************************************************************************************************************************* */
+//    LOCATION UPDATE BUTTON -->> WORK IN PROGRESS <<--
+//************************************************************************************************************************************************************************************* */
 
-  let data = {
-    locid: 'locationid',
-    partid: 'partid',
-    rawloc: 'rawlocid',
-    rawpart: 'rawpartid',
-    ip: 'ip',
-    user: 'user'
-  }
 
-  let fetchData = {
-    method: 'POST',
-    body: data,
-    headers: new Headers()
-  }
+function locationUpdate(locid, partid, newqty) {
+  alert("Update coming soon !!!");
 
-  fetch(url, fetchData)
-    .then(function () {
-      console.log("post request was successful");
-    });
 
+  // var j = 0;
+  // while (j < numLocs) {
+  //   var locationid = document.getElementById('locid' + j).value;
+  //   var partid = document.getElementById('partid' + j).value;
+  //   var newqty = document.getElementById('newqty' + j).value;
+  //   console.log("locid: " + locationid);
+  //   console.log("partid: " + partid);
+
+  //   const url = "https://namor.club/p.php";
+  //   let data = {
+  //     locid: locationid,
+  //     partid: partid,
+  //     rawloc: 0,
+  //     rawpart: newqty,
+  //     ip: 0,
+  //     user: 'test'
+  //   }
+
+  //   let fetchData = {
+  //     method: 'POST',
+  //     body: JSON.stringify(data),
+  //     headers: new Headers()
+  //   }
+
+  //   console.log(fetchData.body[0])
+
+  //   fetch(url, fetchData)
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+
+
+  //   j++;
+  // }
 
 }
+
+//************************************************************************************************************************************************************************************* */
+//   CLEAR FIELDS AND EVERYTHING BUTTON 
+//************************************************************************************************************************************************************************************* */
 
 function clearData() {
   let txt1 = document.getElementById("outputDiv");
   txt1.innerHTML = "";
-  prodScan.value = "";
-  locScan.value = "";
+  idScan.value = "";
+  idScan.value = "";
 }
 
+const clearField = function () {
+  idScan.value = "";
+}
 
-
-// qrcode.callback = res => {
-//   //txt1.innerHTML = "Scanning...";
-//   //res in the qr code of the product gives the https://namor.club/p.php?<product number>
-//   //console.log("here")
-//   if (res) {
-//     //txt1.innerHTML = "Scanning...";
-//     //console.log(res); 
-
-//     btnData.hidden = false;
-//     //outputData.innerText = res;
-//     scanning = false;
-//     var res2 = res;
-//     //if()
-//     url = "https://namor.club/p.php?" + res;
-//     //console.log(res); 
-
-//     fetch(res)
-//       .then((response) => {
-//         if (!response.ok) throw new Error("An error occured");
-//         return response.json();
-//       })
-//       .then((response) => {
-//         //console.log(response);
-//         outputData.innerHTML = response.inter[0].inter;
-//         //txt1.innerHTML = ""; 
-//         txt1.innerHTML += "****************************************\n";
-//         txt1.innerHTML += "Product number      * " + response.ex.num + "\n";
-//         txt1.innerHTML += "Product description * " + response.ex.des + "\n";
-
-//         var i = 0;
-//         while (response.loc[i].id != null) {
-//           //console.log(response.loc[i].id);
-//           txt1.innerHTML += "Location ID         * " + response.loc[i].id + " \n";
-//           txt1.innerHTML += "Location quantity   * " + response.loc[i].qty + "\n";
-//           i++;
-//         }
-//       })
-//       .catch((error) => {
-//         console.log(error)
-//       });
-
-//     qrResult.hidden = false;
-//     qrCodeResults.push(res);
-//     btnScanQR.hidden = false;
-//     navigator.mediaDevices
-//       .getUserMedia({ video: { facingMode: "environment" } })
-//       .then(function (stream) {
-//         scanning = true;
-//         //qrResult.hidden = true;
-//         btnScanQR.hidden = true;
-//         canvasElement.hidden = false;
-//         video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-//         video.srcObject = stream;
-//         video.play();
-//         tick();
-//         scan();
-//       });
-//   }
-// };
-
-// //    if (err) throw err; 
-
-// btnScanQR.addEventListener("click", function () {
-//   //alert("Hey this is working!!")
-//   //txt1.innerHTML = "Scanning...";
-//   navigator.mediaDevices
-//     .getUserMedia({ video: { facingMode: "environment" } })
-//     .then(function (stream) {
-//       scanning = true;
-//       qrResult.hidden = true;
-//       btnScanQR.hidden = true;
-
-//       canvasElement.hidden = false;
-//       video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-//       video.srcObject = stream;
-//       video.play();
-//       tick();
-//       scan();
-//     });
-// });
-
-// function tick() {
-//   canvasElement.height = video.videoHeight;
-//   canvasElement.width = video.videoWidth;
-//   canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-
-//   scanning && requestAnimationFrame(tick);
-// }
-
-// function scan() {
-//   try {
-//     qrcode.decode();
-//   } catch (e) {
-//     setTimeout(scan, 300);
-//   }
-// }
-
-
+//************************************************************************************************************************************************************************************* */
+//************************************************************************************************************************************************************************************* */

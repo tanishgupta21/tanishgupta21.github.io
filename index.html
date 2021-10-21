@@ -2,18 +2,20 @@
 <html>
 
 <head>
-  <title>Max Advanced Brakes</title>
+  <title> Max Advanced Brakes </title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <link rel="stylesheet" href="src/style.css" />
-  <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
 </head>
 
 <body>
+
   <div id="container">
     <h1> Cycle Count </h1>
-    <input id="prodScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Product" onkeyup="getData()" onfocus="this.value=''" autofocus />
-    <input id="locScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Location" onkeyup="getData2()" onfocus="this.value=''"/>
+    <input id="idScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Scan Here" onkeyup="firstfunction()" onfocus="this.value=''" autofocus />
+    <!-- <input id="locScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Location" onkeyup="getLocationFunctions()" onfocus="this.value=''" /> -->
+    <br><br>
+  <h2 id="labelHeading">- - - - -</h2>
   </div>
 
   <br><br>
@@ -21,10 +23,13 @@
   <script src="./src/app.js" type="application/javascript"></script>
 
   <div id="outputDiv"></div>
+
   <br><br>
+
   <div class="btn-group">
-    <button id="btn2" onclick="clearData()"> Clear </button>
+    <button id="btn3" onclick="clearData()"> Clear </button>
   </div>
+
 </body>
 
 </html>
@@ -37,6 +42,18 @@ depening upon the need
 single button is much easier navigate
 multiple buttons allow a bit more flexibility 
 
+
+@Tanish POST JSON to https://namor.club/p.php with the following fields:
+"locid" = locationid
+"partid" = partid
+"rawloc" = raw input for location
+"rawpart" = raw input for part
+"ip" = client IP
+"user" = client username
+
+all are optional
+
+@Tanish you can check if it succeeded or not with namor.club/p.php?PARTNAMEHERE, it will be under cyclecheck
 -->
 
 
