@@ -64,13 +64,14 @@ const getPartFunctions = function () {
 
 function getLocations(abc) {
   let txt1 = document.getElementById("outputDiv");
-  url = "https://namor.club/p.php?" + abc;
+  url = abc;
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error("An error occured");
       return response.json();
     })
     .then((response) => {
+      //localStorage.setItem("prodName", response.ex[1]); 
       txt1.innerHTML = "";
       txt1.innerHTML += "<button onclick='partUpdate()'> Update </button><br><br>";
       txt1.innerHTML += "<label style='float:left'> Location ID </label> <label style='float:none'> Current Quantity </label> <label style='float:right'> New Quantity </label><br><br>";
@@ -85,7 +86,6 @@ function getLocations(abc) {
         i++;
         clearField();
       }
-
     })
     .catch((error) => {
       console.log(error);
@@ -106,7 +106,6 @@ const retrieveProdId = function () {
 
 const getLocationFunctions = function () {
   let text = idScan.value;
-  //console.log("text in getLocationFunctions: " + text);
   localStorage.setItem("id2", text);
   getParts(text);
   retrieveLocId();
@@ -123,7 +122,9 @@ function getParts(abc) {
     })
     .then((response) => {
       txt1.innerHTML = "";
-      txt1.innerHTML += "<button onclick='locationUpdate()'> Update </button><br><br>"
+      localStorage.setItem("name", response.name); 
+      console.log(localStorage.getItem("name")); 
+      txt1.innerHTML += "<button onclick='locationUpdate()'> Update </button><br><br>";
       txt1.innerHTML += "<label style='float:left'> Product ID </label> <label style='float:none'> Current Quantity </label> <label style='float:right'> Quantity </label><br><br>";
       var i = 0;
       numLocs = 0;
@@ -140,13 +141,12 @@ function getParts(abc) {
     .catch((error) => {
       console.log(error);
     });
-
 }
 
 
 const retrieveLocId = function () {
-  var text = localStorage.getItem("id2");
-  labelHeading.innerHTML = "Location ID : " + text;
+  var text = localStorage.getItem("name");
+  labelHeading.innerHTML = "Location ID :- " + text;
 }
 
 
@@ -159,6 +159,44 @@ const retrieveLocId = function () {
 function partUpdate() {
   var j = 0;
   while (j < numProds) {
+    var locationid = document.getElementById('locid' + j).value;
+    var partid = document.getElementById('partid' + j).value;
+    var newqty = document.getElementById('newqty' + j).value;
+    console.log("locid: " + locationid);
+    console.log("partid: " + partid);
+    const url = "https://namor.club/p.php";
+    let data = {
+      locid: locationid,
+      partid: partid,
+      rawloc: 0,
+      rawpart: newqty,
+      ip: 0,
+      user: 'test'
+    }
+    let fetchData = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: new Headers()
+    }
+    console.log(fetchData.body[0]);
+    fetch(url, fetchData)
+      .catch((error) => {
+        console.log(error);
+      })
+    j++;
+  }
+
+}
+
+//************************************************************************************************************************************************************************************* */
+//    LOCATION UPDATE BUTTON -->> WORK IN PROGRESS <<--
+//************************************************************************************************************************************************************************************* */
+
+
+function locationUpdate(locid, partid, newqty) {
+
+  var j = 0;
+  while (j < numLocs) {
     var locationid = document.getElementById('locid' + j).value;
     var partid = document.getElementById('partid' + j).value;
     var newqty = document.getElementById('newqty' + j).value;
@@ -191,52 +229,6 @@ function partUpdate() {
 
     j++;
   }
-
-}
-
-//************************************************************************************************************************************************************************************* */
-//    LOCATION UPDATE BUTTON -->> WORK IN PROGRESS <<--
-//************************************************************************************************************************************************************************************* */
-
-
-function locationUpdate(locid, partid, newqty) {
-  alert("Update coming soon !!!");
-
-
-  // var j = 0;
-  // while (j < numLocs) {
-  //   var locationid = document.getElementById('locid' + j).value;
-  //   var partid = document.getElementById('partid' + j).value;
-  //   var newqty = document.getElementById('newqty' + j).value;
-  //   console.log("locid: " + locationid);
-  //   console.log("partid: " + partid);
-
-  //   const url = "https://namor.club/p.php";
-  //   let data = {
-  //     locid: locationid,
-  //     partid: partid,
-  //     rawloc: 0,
-  //     rawpart: newqty,
-  //     ip: 0,
-  //     user: 'test'
-  //   }
-
-  //   let fetchData = {
-  //     method: 'POST',
-  //     body: JSON.stringify(data),
-  //     headers: new Headers()
-  //   }
-
-  //   console.log(fetchData.body[0])
-
-  //   fetch(url, fetchData)
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-
-
-  //   j++;
-  // }
 
 }
 
