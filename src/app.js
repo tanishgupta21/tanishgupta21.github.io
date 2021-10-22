@@ -9,6 +9,7 @@ const labelHeading = document.getElementById("labelHeading");
 //************************************************************************************************************************************************************************************* */
 //************************************************************************************************************************************************************************************* */
 
+
 const firstfunction = function () {
   var text = idScan.value;
   var varCheck = /[a-zA-z]/g;
@@ -20,32 +21,6 @@ const firstfunction = function () {
     //console.log("test: no alphabets are present");
     getLocationFunctions();
   }
-
-
-  //url = "https://namnor.club/p.php?" + text;
-
-  // fetch(url).then(function (response) {
-  //   if (response.ok) {
-  //     return response.json();
-  //   } else {
-  //     return Promise.reject(response);
-  //   }
-  // }).then(function (text) {
-  //   scannedId = text;
-  //   getLocationFunctions();
-  // }).then(function (response) {
-  //   if (response.ok) {
-  //     return response.json();
-  //   } else {
-  //     return Promise.reject(response);
-  //   }
-  // }).then(function () {
-  //   scannedId = text;
-  //   getPartFunctions();
-
-  // }).catch(function (error) {
-  //   console.warn(error);
-  // })
 }
 
 
@@ -150,7 +125,6 @@ const retrieveLocId = function () {
 }
 
 
-
 //************************************************************************************************************************************************************************************* */
 //    PARTS UPDATE BUTTON
 //************************************************************************************************************************************************************************************* */
@@ -188,13 +162,13 @@ function partUpdate() {
 
 }
 
+
 //************************************************************************************************************************************************************************************* */
 //    LOCATION UPDATE BUTTON -->> WORK IN PROGRESS <<--
 //************************************************************************************************************************************************************************************* */
 
 
 function locationUpdate(locid, partid, newqty) {
-
   var j = 0;
   while (j < numLocs) {
     var locationid = document.getElementById('locid' + j).value;
@@ -212,29 +186,25 @@ function locationUpdate(locid, partid, newqty) {
       ip: 0,
       user: 'test'
     }
-
     let fetchData = {
       method: 'POST',
       body: JSON.stringify(data),
       headers: new Headers()
     }
-
     console.log(fetchData.body[0])
-
     fetch(url, fetchData)
       .catch((error) => {
         console.log(error);
       })
-
-
     j++;
   }
-
 }
+
 
 //************************************************************************************************************************************************************************************* */
 //   CLEAR FIELDS AND EVERYTHING BUTTON 
 //************************************************************************************************************************************************************************************* */
+
 
 function clearData() {
   let txt1 = document.getElementById("outputDiv");
@@ -243,9 +213,11 @@ function clearData() {
   idScan.value = "";
 }
 
+
 const clearField = function () {
   idScan.value = "";
 }
+
 
 //************************************************************************************************************************************************************************************* */
 //************************************************************************************************************************************************************************************* */
