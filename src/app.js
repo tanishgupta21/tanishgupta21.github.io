@@ -3,10 +3,24 @@ var scans = [];
 var numProds = 0;
 var numLocs = 0;
 var scannedId;
+var searchTimeout;
 const idScan = document.getElementById("idScan");
 const labelHeading = document.getElementById("labelHeading");
 
+
 //************************************************************************************************************************************************************************************* */
+//   typing check function - check when the user has stopped typing in the input field and calls first function when the user stops 
+//************************************************************************************************************************************************************************************* */
+
+
+const typingCheck = function () {
+  if (searchTimeout != undefined) clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(firstfunction, 250);
+}
+
+
+//************************************************************************************************************************************************************************************* */
+//    First Function - differs between the part id and location id and calls the respective functions 
 //************************************************************************************************************************************************************************************* */
 
 
@@ -14,18 +28,16 @@ const firstfunction = function () {
   var text = idScan.value;
   var varCheck = /[a-zA-z]/g;
   if (varCheck.test(text)) {
-    //console.log("test: alphabets are present ");
     getPartFunctions();
   }
   else {
-    //console.log("test: no alphabets are present");
     getLocationFunctions();
   }
 }
 
 
 //************************************************************************************************************************************************************************************* */
-//    FIELD UPDATE WHEN SCAN PRODUCT ID 
+//    FIELD UPDATE WHEN SCAN PRODUCT ID - shows the locations where the products are available when the product id is scanned. 
 //************************************************************************************************************************************************************************************* */
 
 
@@ -33,7 +45,6 @@ const getPartFunctions = function () {
   let text = idScan.value;
   localStorage.setItem("id", text);
   getLocations(text);
-  retrieveProdId();
 }
 
 
@@ -42,40 +53,38 @@ function getLocations(abc) {
   url = abc;
   fetch(url)
     .then((response) => {
+      console.log(response)
       if (!response.ok) throw new Error("An error occured");
       return response.json();
     })
     .then((response) => {
-      //localStorage.setItem("prodName", response.ex[1]); 
       txt1.innerHTML = "";
       txt1.innerHTML += "<button onclick='partUpdate()'> Update </button><br><br>";
       txt1.innerHTML += "<label style='float:left'> Location ID </label> <label style='float:none'> Current Quantity </label> <label style='float:right'> New Quantity </label><br><br>";
       var i = 0;
       numProds = 0;
-      while (response.loc[i].id != null) {
-        txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled style='font-size:25px; float:left; color:black' size='15'>";
+      labelHeading.innerHTML = "Part ID : " + response.ex.num;      
+      console.log(response.loc[0].id)
+      let length = response.loc.length;
+      while (i < length) {
+        txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled style='font-size:25px; float:left; color:black' size='12'>";
         txt1.innerHTML += "<input id='partid" + i + "' type='text' value='" + response.ex.id + "' disabled style='font-size:25px; float:left; color:black' hidden>";
-        txt1.innerHTML += "<input id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' style='font-size:25px; float:none;' disabled size='15'>";
-        txt1.innerHTML += "<input id='newqty" + i + "' type='number' style='font-size:25px; float:right;' size='15'><br><br>";
+        txt1.innerHTML += "<input id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' style='font-size:25px; float:none;' disabled size='10'>";
+        txt1.innerHTML += "<input id='newqty" + i + "' type='number' style='font-size:25px; float:right;' size='12'><br><br>";
         numProds++;
         i++;
-        clearField();
+
       }
+      clearField(); 
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.message);
     });
 }
 
 
-const retrieveProdId = function () {
-  var text = localStorage.getItem("id");
-  labelHeading.innerHTML = "Part ID : " + text;
-}
-
-
 //************************************************************************************************************************************************************************************* */
-//     FIELD UPDATE WHEN SCAN LOCATION ID 
+//     FIELD UPDATE WHEN SCAN LOCATION ID - shows the detials of the products which are available when you scan a location 
 //************************************************************************************************************************************************************************************* */
 
 
@@ -83,12 +92,11 @@ const getLocationFunctions = function () {
   let text = idScan.value;
   localStorage.setItem("id2", text);
   getParts(text);
-  retrieveLocId();
 }
 
 
 function getParts(abc) {
-  let txt1 = document.getElementById("outputDiv");  
+  let txt1 = document.getElementById("outputDiv");
   url = "https://namor.club/p.php?loc=" + abc;
   fetch(url)
     .then((response) => {
@@ -97,21 +105,21 @@ function getParts(abc) {
     })
     .then((response) => {
       txt1.innerHTML = "";
-      localStorage.setItem("name", response.name); 
-      console.log(localStorage.getItem("name")); 
       txt1.innerHTML += "<button onclick='locationUpdate()'> Update </button><br><br>";
       txt1.innerHTML += "<label style='float:left'> Product ID </label> <label style='float:none'> Current Quantity </label> <label style='float:right'> Quantity </label><br><br>";
       var i = 0;
       numLocs = 0;
-      while (response.parts[i].partid != null) {
+      labelHeading.innerHTML = "Location ID : " + response.name;
+      let length = response.parts.length;
+      while (i < length) {
         txt1.innerHTML += "<input id='partid" + i + "' type='text' value='" + response.parts[i].num + "' disabled style='font-size:25px; float:left; color:black' size='15'>";
         txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.id + "' disabled style='font-size:25px; float:left; color:black' hidden>";
         txt1.innerHTML += "<input id='partqty" + i + "' type='text' value='" + response.parts[i].qty + "' style='font-size:25px; float:none;' size='15' disabled>";
         txt1.innerHTML += "<input id='newqty" + i + "' type='number' style='font-size:25px; float:right;' size='15'><br><br>";
         numLocs++;
         i++;
-        clearField();
       }
+      clearField();
     })
     .catch((error) => {
       console.log(error);
@@ -119,14 +127,8 @@ function getParts(abc) {
 }
 
 
-const retrieveLocId = function () {
-  var text = localStorage.getItem("name");
-  labelHeading.innerHTML = "Location ID :- " + text;
-}
-
-
 //************************************************************************************************************************************************************************************* */
-//    PARTS UPDATE BUTTON
+//    PARTS UPDATE BUTTON - updates the database with updated quantities
 //************************************************************************************************************************************************************************************* */
 
 
@@ -164,7 +166,7 @@ function partUpdate() {
 
 
 //************************************************************************************************************************************************************************************* */
-//    LOCATION UPDATE BUTTON -->> WORK IN PROGRESS <<--
+//    LOCATION UPDATE BUTTON - update the database with updated quantities
 //************************************************************************************************************************************************************************************* */
 
 
@@ -176,7 +178,6 @@ function locationUpdate(locid, partid, newqty) {
     var newqty = document.getElementById('newqty' + j).value;
     console.log("locid: " + locationid);
     console.log("partid: " + partid);
-
     const url = "https://namor.club/p.php";
     let data = {
       locid: locationid,
@@ -211,6 +212,7 @@ function clearData() {
   txt1.innerHTML = "";
   idScan.value = "";
   idScan.value = "";
+  labelHeading.innerHTML = "- - - - -";
 }
 
 
@@ -221,3 +223,4 @@ const clearField = function () {
 
 //************************************************************************************************************************************************************************************* */
 //************************************************************************************************************************************************************************************* */
+

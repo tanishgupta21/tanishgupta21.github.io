@@ -1,8 +1,8 @@
 {
     "status": "OK",
     "ex": {
-        "id": 1783,
-        "num": "R31293ONZ",
+        "id": 1713,
+        "num": "R31283ONZ",
         "des": "Premium OE Rotor",
         "variantid": 4,
         "typeid": 1,
@@ -15,147 +15,183 @@
         "mavg": 0,
         "deflocal": null,
         "active": 1,
-        "weight_lbs": null,
+        "weight_lbs": "17.22",
         "origin": null,
-        "costid": null,
+        "costid": 1152,
         "name": null,
         "lgid": null
     },
     "inter": [
         {
-            "inter": "ONZ0120",
+            "inter": "ONZ0110",
             "des": "MAX",
-            "partid": 1783
+            "partid": 1713
         }
     ],
     "upc": [
         {
-            "upc": "665083110468"
+            "upc": "665083110369"
         },
         {
-            "upc": "702669002134"
+            "upc": "702669002035"
         },
         {
-            "upc": "809225003946"
+            "upc": "809225003892"
         }
     ],
     "loc": [
         {
-            "id": 126644,
-            "locationid": 1565,
-            "qty": 0,
-            "loc": "2554 : A12 : 08 : 7R",
+            "id": 7920,
+            "locationid": 1449,
+            "qty": 14,
+            "loc": "2438 : A11 : 10 : 2L",
             "lg": "WAREHOUSE"
         },
         {
-            "id": 97150,
-            "locationid": 5200,
+            "id": 49728,
+            "locationid": 5084,
             "qty": 0,
-            "loc": "2554 : A12 : 08 : 7R",
+            "loc": "2438 : A11 : 10 : 2L",
             "lg": "LOCAL PURCHASE"
+        },
+        {
+            "id": 152860,
+            "locationid": 7267,
+            "qty": 2,
+            "loc": "cancelation",
+            "lg": "WAREHOUSE"
         }
     ],
-    "landed": false,
+    "landed": {
+        "costusd": "11.16",
+        "costcad": "13.43"
+    },
     "partcat": false,
-    "fifolist": [],
+    "fifo": {
+        "id": 1152,
+        "created": "2021-06-08 19:58:25",
+        "poitemid": null,
+        "updated": "2021-09-25 20:31:29",
+        "partid": 1713,
+        "qty": 32,
+        "qty_left": 14,
+        "finished": null,
+        "cost_cad_part": null,
+        "cost_cad_freight": "0.00",
+        "cost_cad_customs": "0.00",
+        "cost_cad_final_per": "14.51",
+        "cost_usd_final_per": "11.16",
+        "container": null,
+        "code": null,
+        "uploaded": null
+    },
+    "fifolist": [
+        {
+            "id": 1152,
+            "created": "2021-06-08 19:58:25",
+            "poitemid": null,
+            "updated": "2021-09-25 20:31:29",
+            "partid": 1713,
+            "qty": 32,
+            "qty_left": 14,
+            "finished": null,
+            "cost_cad_part": null,
+            "cost_cad_freight": "0.00",
+            "cost_cad_customs": "0.00",
+            "cost_cad_final_per": "14.51",
+            "cost_usd_final_per": "11.16",
+            "container": null,
+            "code": null,
+            "uploaded": null
+        }
+    ],
     "cycle": [
         {
             "cycled": 0,
-            "partid": 1783,
-            "num": "R31293ONZ",
+            "partid": 1713,
+            "num": "R31283ONZ",
             "inter": "",
-            "lgid": 3,
-            "qty": "0",
-            "locationid": 5200
+            "lgid": 1,
+            "qty": "42",
+            "locationid": 1449
         },
         {
             "cycled": 0,
-            "partid": 1783,
-            "num": "R31293ONZ",
+            "partid": 1713,
+            "num": "R31283ONZ",
+            "inter": "",
+            "lgid": 3,
+            "qty": "0",
+            "locationid": 5084
+        },
+        {
+            "cycled": 0,
+            "partid": 1713,
+            "num": "R31283ONZ",
             "inter": "",
             "lgid": 1,
-            "qty": "0",
-            "locationid": 1565
+            "qty": "2",
+            "locationid": 7267
         }
     ],
     "cyclecheck": [
         {
-            "id": 7,
-            "locid": 5200,
-            "partid": 1783,
+            "id": 29,
+            "locid": 1449,
+            "partid": 1713,
             "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-19 16:32:13",
+            "rawpart": "231",
+            "scanned": "2021-10-22 17:42:50",
             "ip": "0",
             "user": null
         },
         {
-            "id": 8,
-            "locid": 1565,
-            "partid": 1783,
+            "id": 30,
+            "locid": 7267,
+            "partid": 1713,
             "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-19 16:32:13",
+            "rawpart": "453",
+            "scanned": "2021-10-22 17:42:50",
             "ip": "0",
             "user": null
         },
         {
-            "id": 9,
-            "locid": 1565,
-            "partid": 1783,
+            "id": 31,
+            "locid": 5084,
+            "partid": 1713,
             "rawloc": "0",
-            "rawpart": "123",
-            "scanned": "2021-10-19 16:33:28",
+            "rawpart": "32",
+            "scanned": "2021-10-22 17:42:50",
             "ip": "0",
             "user": null
         },
         {
-            "id": 10,
-            "locid": 5200,
-            "partid": 1783,
+            "id": 32,
+            "locid": 1449,
+            "partid": 1713,
             "rawloc": "0",
-            "rawpart": "23",
-            "scanned": "2021-10-19 16:33:28",
+            "rawpart": "43",
+            "scanned": "2021-10-25 14:58:00",
             "ip": "0",
             "user": null
         },
         {
-            "id": 19,
-            "locid": 5200,
-            "partid": 1783,
+            "id": 33,
+            "locid": 5084,
+            "partid": 1713,
             "rawloc": "0",
-            "rawpart": "12",
-            "scanned": "2021-10-20 09:17:17",
+            "rawpart": "65",
+            "scanned": "2021-10-25 14:58:00",
             "ip": "0",
             "user": null
         },
         {
-            "id": 20,
-            "locid": 1565,
-            "partid": 1783,
+            "id": 34,
+            "locid": 7267,
+            "partid": 1713,
             "rawloc": "0",
-            "rawpart": "10",
-            "scanned": "2021-10-20 09:17:17",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 21,
-            "locid": 5200,
-            "partid": 1783,
-            "rawloc": "0",
-            "rawpart": "12",
-            "scanned": "2021-10-20 09:17:17",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 22,
-            "locid": 1565,
-            "partid": 1783,
-            "rawloc": "0",
-            "rawpart": "10",
-            "scanned": "2021-10-20 09:17:17",
+            "rawpart": "76",
+            "scanned": "2021-10-25 14:58:00",
             "ip": "0",
             "user": null
         }
