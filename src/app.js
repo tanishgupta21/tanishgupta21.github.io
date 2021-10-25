@@ -26,7 +26,7 @@ const typingCheck = function () {
 
 const firstfunction = function () {
   var text = idScan.value;
-  var varCheck = /[a-zA-z]/g;
+  var varCheck = /[a-zA-z]/g; // using regex to compare strings and numbers in the string
   if (varCheck.test(text)) {
     getPartFunctions();
   }
@@ -52,30 +52,27 @@ function getLocations(abc) {
   let txt1 = document.getElementById("outputDiv");
   url = abc;
   fetch(url)
-    .then((response) => {
-      console.log(response)
+    .then((response) => {      
       if (!response.ok) throw new Error("An error occured");
       return response.json();
     })
     .then((response) => {
       txt1.innerHTML = "";
       txt1.innerHTML += "<button onclick='partUpdate()'> Update </button><br><br>";
-      txt1.innerHTML += "<label style='float:left'> Location ID </label> <label style='float:none'> Current Quantity </label> <label style='float:right'> New Quantity </label><br><br>";
+      txt1.innerHTML += "<label style='float:left'> Location ID </label> <label style='float:left'> Current Quantity </label> <label style='float:left'> New Quantity </label><br><br>";
       var i = 0;
       numProds = 0;
-      labelHeading.innerHTML = "Part ID : " + response.ex.num;      
-      console.log(response.loc[0].id)
+      labelHeading.innerHTML = "Part ID : " + response.ex.num;
       let length = response.loc.length;
       while (i < length) {
         txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled style='font-size:25px; float:left; color:black' size='12'>";
-        txt1.innerHTML += "<input id='partid" + i + "' type='text' value='" + response.ex.id + "' disabled style='font-size:25px; float:left; color:black' hidden>";
-        txt1.innerHTML += "<input id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' style='font-size:25px; float:none;' disabled size='10'>";
+        txt1.innerHTML += "<input id='partid" + i + "' type='text' value='" + response.ex.id + "' disabled style='font-size:25px; color:black' hidden>";
+        txt1.innerHTML += "<input class='classLoc' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' style='font-size:25px; float:left;' disabled size='10'>";
         txt1.innerHTML += "<input id='newqty" + i + "' type='number' style='font-size:25px; float:right;' size='12'><br><br>";
         numProds++;
         i++;
-
       }
-      clearField(); 
+      clearField();
     })
     .catch((error) => {
       console.log(error.message);
@@ -106,16 +103,16 @@ function getParts(abc) {
     .then((response) => {
       txt1.innerHTML = "";
       txt1.innerHTML += "<button onclick='locationUpdate()'> Update </button><br><br>";
-      txt1.innerHTML += "<label style='float:left'> Product ID </label> <label style='float:none'> Current Quantity </label> <label style='float:right'> Quantity </label><br><br>";
+      txt1.innerHTML += "<label style='float:left'> Product ID </label> <label style='float:left'> Current Quantity </label> <label style='float:left'> Quantity </label><br><br>";
       var i = 0;
       numLocs = 0;
       labelHeading.innerHTML = "Location ID : " + response.name;
       let length = response.parts.length;
       while (i < length) {
-        txt1.innerHTML += "<input id='partid" + i + "' type='text' value='" + response.parts[i].num + "' disabled style='font-size:25px; float:left; color:black' size='15'>";
+        txt1.innerHTML += "<input id='partid" + i + "' type='text' value='" + response.parts[i].num + "' disabled style='font-size:25px; float:left; color:black' size='12'>";
         txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.id + "' disabled style='font-size:25px; float:left; color:black' hidden>";
-        txt1.innerHTML += "<input id='partqty" + i + "' type='text' value='" + response.parts[i].qty + "' style='font-size:25px; float:none;' size='15' disabled>";
-        txt1.innerHTML += "<input id='newqty" + i + "' type='number' style='font-size:25px; float:right;' size='15'><br><br>";
+        txt1.innerHTML += "<input class='classLoc' id='partqty" + i + "' type='text' value='" + response.parts[i].qty + "' style='font-size:25px; float:left;' size='15' disabled  size='10'>";
+        txt1.innerHTML += "<input id='newqty" + i + "' type='number' style='font-size:25px; float:right;' size='12'><br><br>";
         numLocs++;
         i++;
       }
@@ -161,7 +158,6 @@ function partUpdate() {
       })
     j++;
   }
-
 }
 
 
@@ -222,5 +218,5 @@ const clearField = function () {
 
 
 //************************************************************************************************************************************************************************************* */
+//  >>> END <<<
 //************************************************************************************************************************************************************************************* */
-

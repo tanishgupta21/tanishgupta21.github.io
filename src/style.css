@@ -1,70 +1,67 @@
 html {
-    height: 100%;
-  }
-  
-  body {
-    font-family: sans-serif;
-    padding: 0 10px;
-    height: 100%;
-    background: black;
-    margin: 0;
-    color:whitesmoke;
-  }
-  
-  h1 {
-    /* color: white; */
-    margin: 0;
-    padding: 15px;
-    font-size: 350%;
-  }
-  
-  #container {
-    text-align: center;
-    margin: 0;
-  }
+  height: 100%;
+}
 
-  #txt1 {
-    color : black;
-    /* color : #fff;  */
-    background-color: white;
+body {
+  font-family: sans-serif;
+  padding: 0 10px;
+  height: 100%;
+  background: black;
+  margin: 0;
+  color:whitesmoke;
+}
 
-  }
+h1 {
+  margin: 0;
+  padding: 15px;
+  font-size: 350%;
+}
 
-  #idScan {
-    font-size: xx-large; 
-    text-align: center;
-  }
+#container {
+  text-align: center;
+  margin: 0;
+}
 
-  #outputDiv {
-    font-size: 30px;
-    align-items: center;
-    text-align: center;
-    font-weight: bold;
-    background-color: grey;
-    padding: 10px;
-    color : blue; 
-  }
+#txt1 {
+  color : black;
+  background-color: white;
+}
 
-  input {
-    text-align: center;
-    size: 4px;
+#idScan {
+  font-size: xx-large; 
+  text-align: center;
+}
 
-  }
+#outputDiv {
+  font-size: 30px;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  background-color: grey;
+  padding: 10px;
+  color : blue; 
+}
 
-  button {
-    font-size: 25px;    
-    padding-left: 30px; 
-    padding-right: 30px; 
-    width: 100%; 
-    padding: 20px; 
-    text-align: center;    
-  }
+input {
+  text-align: center;
+  size: 4px;
+}
 
-  label {
-    width: 200px;
-    font-size: x-large;
-  }
+button {
+  font-size: 25px;    
+  padding-left: 30px; 
+  padding-right: 30px; 
+  width: 100%; 
+  padding: 20px; 
+  text-align: center;    
+}
 
-  #locid {
-    width: 15px;
-  }
+label {
+  display: inline-block;
+  width: 200px;
+  font-size: x-large;
+}
+
+.classLoc {
+  margin-left: 5%; 
+}
