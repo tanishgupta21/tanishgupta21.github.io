@@ -6,12 +6,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <link rel="stylesheet" href="src/style.css" />
+  <script type="text/javascript" src="jsons/product.json"></script>
 </head>
 
 <body>
 
   <div id="container">
-    <h1> QR Scanner App </h1>
+    <h1> Inventory </h1>
     <input id="idScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Location/Product ID" onkeyup="typingCheck()" onfocus="this.value=''" autofocus />    
     <br><br>
   <h2 id="labelHeading">- - - - -</h2>
@@ -36,61 +37,36 @@
 
 
 
-<!-- we can make a single button or multiple buttons for each of them 
-depening upon the need 
-single button is much easier navigate
-multiple buttons allow a bit more flexibility 
+<!-- 
 
 
-@Tanish POST JSON to https://namor.club/p.php with the following fields:
-"locid" = locationid
-"partid" = partid
-"rawloc" = raw input for location
-"rawpart" = raw input for part
-"ip" = client IP
-"user" = client username
+  @Tanish POST JSON to https://namor.club/p.php with the following fields:
+  "locid" = locationid
+  "partid" = partid
+  "rawloc" = raw input for location
+  "rawpart" = raw input for part
+  "ip" = client IP
+  "user" = client username
 
-all are optional
+ all are optional
 
-@Tanish you can check if it succeeded or not with namor.club/p.php?PARTNAMEHERE, it will be under cyclecheck
--->
-
+   @Tanish you can check if it succeeded or not with namor.club/p.php?PARTNAMEHERE, it will be under cyclecheck
 
 
-
-
-
-
-
-
-<!--
   get the curernt of the database or bin 
   reqd info 
 
   post the actual shelf amount
    update the status of scanned from 0 to 1 
 
-  
-  Locations: 
-   location qr scanned 
-    how much it is completed 
-    out of the whole aisle 
-
-  two modules : products and locations
-   
-
-     <button id="btn-scan-qr"> 
-        <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg">
-      </button> -->
-
-
-
-      <!--
-
         we need to put: 
          - allocated parts 
          - pickee item s
+   
          
+  - jonah requirements for inventory :-  
+   - to see the products which have been picked - on the same location 
+   - to see the products which are to be picked - on the same location 
+   - and the original quantity 
 
-
-      -->
+-->

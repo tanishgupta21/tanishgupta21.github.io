@@ -9,7 +9,7 @@ const labelHeading = document.getElementById("labelHeading");
 
 
 //************************************************************************************************************************************************************************************* */
-//   typing check function - check when the user has stopped typing in the input field and calls first function when the user stops 
+//   Typing check function - check when the user has stopped typing in the input field and calls first function when the user stops 
 //************************************************************************************************************************************************************************************* */
 
 
@@ -52,23 +52,39 @@ function getLocations(abc) {
   let txt1 = document.getElementById("outputDiv");
   url = abc;
   fetch(url)
-    .then((response) => {      
+    .then((response) => {
       if (!response.ok) throw new Error("An error occured");
       return response.json();
     })
     .then((response) => {
       txt1.innerHTML = "";
       txt1.innerHTML += "<button onclick='partUpdate()'> Update </button><br><br>";
-      txt1.innerHTML += "<label style='float:left'> Location ID </label> <label style='float:left'> Current Quantity </label> <label style='float:left'> New Quantity </label><br><br>";
+      txt1.innerHTML += "<label style='float:left'> Location ID </label> <label style='float:left'> Current Quantity </label> <label style='float:left'> Total Picked </label> <label style='float:left'> New Quantity </label><br><br>";
       var i = 0;
+      var j = 0;
       numProds = 0;
       labelHeading.innerHTML = "Part ID : " + response.ex.num;
       let length = response.loc.length;
       while (i < length) {
-        txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled style='font-size:25px; float:left; color:black' size='12'>";
+        txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled style='font-size:25px; float:left; color:black' size='8'>";
         txt1.innerHTML += "<input id='partid" + i + "' type='text' value='" + response.ex.id + "' disabled style='font-size:25px; color:black' hidden>";
-        txt1.innerHTML += "<input class='classLoc' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' style='font-size:25px; float:left;' disabled size='10'>";
-        txt1.innerHTML += "<input id='newqty" + i + "' type='number' style='font-size:25px; float:right;' size='12'><br><br>";
+        txt1.innerHTML += "<input class='classLoc' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' style='font-size:25px; float:left;' disabled size='8'>";
+        if (response.pickedtoday.length != 0) {
+          j = response.pickedtoday.length;
+          let z = 0;
+          for (let x = 0; x < j; x++) {
+            if (response.loc[i].locationid == response.pickedtoday[x].locationid) {
+              txt1.innerHTML += "<input id='pickedqty' type='text' value='" + response.pickedtoday[x].totalpicked + "' style='font-size:25px; color:black' size='10' disabled>";
+              z++;
+            }
+          }
+          if (z == 0) {
+            txt1.innerHTML += "<input id='pickedqty' type='text' style='font-size:25px;' size='10' disabled placeholder='0'>";
+          }
+        } else {
+          txt1.innerHTML += "<input id='pickedqty' type='text' style='font-size:25px;' size='10' disabled placeholder='0'>";
+        }
+        txt1.innerHTML += "<input id='newqty" + i + "' type='text' style='font-size:25px; float:right;' size='8'><br><br>";
         numProds++;
         i++;
       }
@@ -81,7 +97,7 @@ function getLocations(abc) {
 
 
 //************************************************************************************************************************************************************************************* */
-//     FIELD UPDATE WHEN SCAN LOCATION ID - shows the detials of the products which are available when you scan a location 
+//     FIELD UPDATE WHEN SCAN LOCATION ID - shows the details of the products which are available when you scan a location 
 //************************************************************************************************************************************************************************************* */
 
 

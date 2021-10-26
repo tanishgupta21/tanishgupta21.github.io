@@ -1,8 +1,8 @@
 {
     "status": "OK",
     "ex": {
-        "id": 1713,
-        "num": "R31283ONZ",
+        "id": 6670,
+        "num": "R54181ONZ",
         "des": "Premium OE Rotor",
         "variantid": 4,
         "typeid": 1,
@@ -13,187 +13,391 @@
         "basenum": null,
         "created": "2020-06-29 17:39:00",
         "mavg": 0,
-        "deflocal": null,
+        "deflocal": 5256,
         "active": 1,
-        "weight_lbs": "17.22",
+        "weight_lbs": "14.33",
         "origin": null,
-        "costid": 1152,
-        "name": null,
-        "lgid": null
+        "costid": 4430,
+        "name": "2610 : A12 : 03 : 4L",
+        "lgid": 3
     },
-    "inter": [
-        {
-            "inter": "ONZ0110",
-            "des": "MAX",
-            "partid": 1713
-        }
-    ],
     "upc": [
         {
-            "upc": "665083110369"
+            "upc": "665083116576"
         },
         {
-            "upc": "702669002035"
+            "upc": "702669007900"
         },
         {
-            "upc": "809225003892"
+            "upc": "809225300373"
         }
     ],
     "loc": [
         {
-            "id": 7920,
-            "locationid": 1449,
-            "qty": 14,
-            "loc": "2438 : A11 : 10 : 2L",
-            "lg": "WAREHOUSE"
+            "id": 149262,
+            "locationid": 286,
+            "qty": 0,
+            "loc": "1275 : A03 : 02 : 1L",
+            "lg": "RESTOCK"
         },
         {
-            "id": 49728,
-            "locationid": 5084,
+            "id": 77969,
+            "locationid": 292,
             "qty": 0,
-            "loc": "2438 : A11 : 10 : 2L",
+            "loc": "1281 : A03 : 02 : 4R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 99271,
+            "locationid": 3927,
+            "qty": 0,
+            "loc": "1281 : A03 : 02 : 4R",
             "lg": "LOCAL PURCHASE"
         },
         {
-            "id": 152860,
+            "id": 77135,
+            "locationid": 334,
+            "qty": 0,
+            "loc": "1323 : A03 : 06 : 2R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 99319,
+            "locationid": 3969,
+            "qty": 0,
+            "loc": "1323 : A03 : 06 : 2R",
+            "lg": "LOCAL PURCHASE"
+        },
+        {
+            "id": 78706,
+            "locationid": 420,
+            "qty": 0,
+            "loc": "1409 : A04 : 11 : 1L",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 101576,
+            "locationid": 4055,
+            "qty": 0,
+            "loc": "1409 : A04 : 11 : 1L",
+            "lg": "LOCAL PURCHASE"
+        },
+        {
+            "id": 169928,
+            "locationid": 499,
+            "qty": 78,
+            "loc": "1488 : A04 : 03 : 5R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 151644,
+            "locationid": 511,
+            "qty": 0,
+            "loc": "1500 : A04 : 02 : 3R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 150068,
+            "locationid": 624,
+            "qty": 0,
+            "loc": "1613 : A05 : 11 : 4R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 157260,
+            "locationid": 632,
+            "qty": 60,
+            "loc": "1621 : A05 : 12 : 5L",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 154733,
+            "locationid": 821,
+            "qty": 156,
+            "loc": "1810 : A07 : 05 : 1R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 2942,
+            "locationid": 1621,
+            "qty": 8,
+            "loc": "2610 : A12 : 03 : 4L",
+            "lg": "WAREHOUSE"
+        },
+        {
+            "id": 2943,
+            "locationid": 5256,
+            "qty": 0,
+            "loc": "2610 : A12 : 03 : 4L",
+            "lg": "LOCAL PURCHASE"
+        },
+        {
+            "id": 75789,
             "locationid": 7267,
-            "qty": 2,
+            "qty": 0,
             "loc": "cancelation",
+            "lg": "WAREHOUSE"
+        },
+        {
+            "id": 76831,
+            "locationid": 3,
+            "qty": 0,
+            "loc": "Receiving",
             "lg": "WAREHOUSE"
         }
     ],
     "landed": {
-        "costusd": "11.16",
-        "costcad": "13.43"
+        "costusd": "9.44",
+        "costcad": "11.05"
     },
     "partcat": false,
     "fifo": {
-        "id": 1152,
-        "created": "2021-06-08 19:58:25",
+        "id": 4430,
+        "created": "2021-06-08 19:58:41",
         "poitemid": null,
-        "updated": "2021-09-25 20:31:29",
-        "partid": 1713,
-        "qty": 32,
-        "qty_left": 14,
-        "finished": null,
+        "updated": "2021-10-26 10:00:04",
+        "partid": 6670,
+        "qty": 64,
+        "qty_left": 0,
+        "finished": "2021-10-26 10:00:04",
         "cost_cad_part": null,
         "cost_cad_freight": "0.00",
         "cost_cad_customs": "0.00",
-        "cost_cad_final_per": "14.51",
-        "cost_usd_final_per": "11.16",
+        "cost_cad_final_per": "12.27",
+        "cost_usd_final_per": "9.44",
         "container": null,
         "code": null,
         "uploaded": null
     },
     "fifolist": [
         {
-            "id": 1152,
-            "created": "2021-06-08 19:58:25",
-            "poitemid": null,
-            "updated": "2021-09-25 20:31:29",
-            "partid": 1713,
-            "qty": 32,
-            "qty_left": 14,
+            "id": 10629,
+            "created": "2021-08-17 09:19:25",
+            "poitemid": 26416,
+            "updated": "2021-08-17 09:19:25",
+            "partid": 6670,
+            "qty": 156,
+            "qty_left": 156,
             "finished": null,
             "cost_cad_part": null,
             "cost_cad_freight": "0.00",
             "cost_cad_customs": "0.00",
-            "cost_cad_final_per": "14.51",
-            "cost_usd_final_per": "11.16",
+            "cost_cad_final_per": "15.71",
+            "cost_usd_final_per": "12.50",
             "container": null,
-            "code": null,
+            "code": "HL06821",
+            "uploaded": null
+        },
+        {
+            "id": 10684,
+            "created": "2021-08-17 16:10:18",
+            "poitemid": 26534,
+            "updated": "2021-08-17 16:10:18",
+            "partid": 6670,
+            "qty": 156,
+            "qty_left": 156,
+            "finished": null,
+            "cost_cad_part": null,
+            "cost_cad_freight": "0.00",
+            "cost_cad_customs": "0.00",
+            "cost_cad_final_per": "14.67",
+            "cost_usd_final_per": "11.67",
+            "container": null,
+            "code": "HL07621",
+            "uploaded": null
+        },
+        {
+            "id": 11544,
+            "created": "2021-09-02 13:21:03",
+            "poitemid": 28308,
+            "updated": "2021-09-02 13:21:03",
+            "partid": 6670,
+            "qty": 78,
+            "qty_left": 78,
+            "finished": null,
+            "cost_cad_part": null,
+            "cost_cad_freight": "0.00",
+            "cost_cad_customs": "0.00",
+            "cost_cad_final_per": "16.39",
+            "cost_usd_final_per": "13.00",
+            "container": null,
+            "code": "210614",
+            "uploaded": null
+        },
+        {
+            "id": 11589,
+            "created": "2021-09-02 13:21:03",
+            "poitemid": 28353,
+            "updated": "2021-09-02 13:21:03",
+            "partid": 6670,
+            "qty": 156,
+            "qty_left": 156,
+            "finished": null,
+            "cost_cad_part": null,
+            "cost_cad_freight": "0.00",
+            "cost_cad_customs": "0.00",
+            "cost_cad_final_per": "17.22",
+            "cost_usd_final_per": "13.67",
+            "container": null,
+            "code": "HL11021",
             "uploaded": null
         }
     ],
     "cycle": [
         {
             "cycled": 0,
-            "partid": 1713,
-            "num": "R31283ONZ",
+            "partid": 6670,
+            "num": "R54181ONZ",
             "inter": "",
-            "lgid": 1,
-            "qty": "42",
-            "locationid": 1449
+            "lgid": 2,
+            "qty": "60",
+            "locationid": 632
         },
         {
             "cycled": 0,
-            "partid": 1713,
-            "num": "R31283ONZ",
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 1,
+            "qty": "24",
+            "locationid": 1621
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
             "inter": "",
             "lgid": 3,
             "qty": "0",
-            "locationid": 5084
+            "locationid": 3927
         },
         {
             "cycled": 0,
-            "partid": 1713,
-            "num": "R31283ONZ",
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 2,
+            "qty": "0",
+            "locationid": 292
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 2,
+            "qty": "78",
+            "locationid": 499
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 2,
+            "qty": "0",
+            "locationid": 420
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 3,
+            "qty": "0",
+            "locationid": 5256
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 3,
+            "qty": "0",
+            "locationid": 4055
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
             "inter": "",
             "lgid": 1,
-            "qty": "2",
+            "qty": "0",
             "locationid": 7267
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 2,
+            "qty": "0",
+            "locationid": 511
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 3,
+            "qty": "0",
+            "locationid": 3969
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 2,
+            "qty": "156",
+            "locationid": 821
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 2,
+            "qty": "0",
+            "locationid": 334
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 2,
+            "qty": "0",
+            "locationid": 286
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 1,
+            "qty": "0",
+            "locationid": 3
+        },
+        {
+            "cycled": 0,
+            "partid": 6670,
+            "num": "R54181ONZ",
+            "inter": "",
+            "lgid": 2,
+            "qty": "0",
+            "locationid": 624
         }
     ],
-    "cyclecheck": [
+    "cyclecheck": [],
+    "pickedtoday": [
         {
-            "id": 29,
-            "locid": 1449,
-            "partid": 1713,
-            "rawloc": "0",
-            "rawpart": "231",
-            "scanned": "2021-10-22 17:42:50",
-            "ip": "0",
-            "user": null
-        },
+            "locationid": 1621,
+            "totalpicked": "8"
+        }, 
         {
-            "id": 30,
-            "locid": 7267,
-            "partid": 1713,
-            "rawloc": "0",
-            "rawpart": "453",
-            "scanned": "2021-10-22 17:42:50",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 31,
-            "locid": 5084,
-            "partid": 1713,
-            "rawloc": "0",
-            "rawpart": "32",
-            "scanned": "2021-10-22 17:42:50",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 32,
-            "locid": 1449,
-            "partid": 1713,
-            "rawloc": "0",
-            "rawpart": "43",
-            "scanned": "2021-10-25 14:58:00",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 33,
-            "locid": 5084,
-            "partid": 1713,
-            "rawloc": "0",
-            "rawpart": "65",
-            "scanned": "2021-10-25 14:58:00",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 34,
-            "locid": 7267,
-            "partid": 1713,
-            "rawloc": "0",
-            "rawpart": "76",
-            "scanned": "2021-10-25 14:58:00",
-            "ip": "0",
-            "user": null
+            "locationid": 286, 
+            "totalpicked": "5"
         }
     ]
 }
