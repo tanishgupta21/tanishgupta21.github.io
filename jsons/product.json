@@ -399,5 +399,15 @@
             "locationid": 286, 
             "totalpicked": "5"
         }
+    ], 
+    "notpickedtoday":[
+        {
+            "locationid" : 821, 
+            "totalpicked" : "10"         
+        }, 
+        {
+            "locationid": 499, 
+            "totalpicked": "23"
+        }
     ]
 }

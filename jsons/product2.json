@@ -1,0 +1,206 @@
+{
+    "status": "OK",
+    "ex": {
+        "id": 1867,
+        "num": "R31308ONZ",
+        "des": "Premium OE Rotor",
+        "variantid": 4,
+        "typeid": 1,
+        "vendorid": null,
+        "cost": null,
+        "deflocid": null,
+        "specialid": null,
+        "basenum": null,
+        "created": "2020-06-29 17:39:00",
+        "mavg": 0,
+        "deflocal": null,
+        "active": 1,
+        "weight_lbs": "12.57",
+        "origin": null,
+        "costid": 1251,
+        "name": null,
+        "lgid": null
+    },
+    "inter": [
+        {
+            "inter": "ONZ0130",
+            "des": "MAX",
+            "partid": 1867
+        }
+    ],
+    "upc": [
+        {
+            "upc": "665083110574"
+        },
+        {
+            "upc": "702669002240"
+        },
+        {
+            "upc": "809225032175"
+        }
+    ],
+    "loc": [
+        {
+            "id": 9213,
+            "locationid": 1445,
+            "qty": 14,
+            "loc": "2434 : A11 : 09 : 3R",
+            "lg": "WAREHOUSE"
+        },
+        {
+            "id": 51466,
+            "locationid": 5080,
+            "qty": 0,
+            "loc": "2434 : A11 : 09 : 3R",
+            "lg": "LOCAL PURCHASE"
+        }
+    ],
+    "landed": {
+        "costusd": "8.59",
+        "costcad": "10.31"
+    },
+    "partcat": false,
+    "fifo": {
+        "id": 1251,
+        "created": "2021-06-08 19:58:26",
+        "poitemid": null,
+        "updated": "2021-10-21 11:00:03",
+        "partid": 1867,
+        "qty": 24,
+        "qty_left": 14,
+        "finished": null,
+        "cost_cad_part": null,
+        "cost_cad_freight": "0.00",
+        "cost_cad_customs": "0.00",
+        "cost_cad_final_per": "11.16",
+        "cost_usd_final_per": "8.59",
+        "container": null,
+        "code": null,
+        "uploaded": null
+    },
+    "fifolist": [
+        {
+            "id": 1251,
+            "created": "2021-06-08 19:58:26",
+            "poitemid": null,
+            "updated": "2021-10-21 11:00:03",
+            "partid": 1867,
+            "qty": 24,
+            "qty_left": 14,
+            "finished": null,
+            "cost_cad_part": null,
+            "cost_cad_freight": "0.00",
+            "cost_cad_customs": "0.00",
+            "cost_cad_final_per": "11.16",
+            "cost_usd_final_per": "8.59",
+            "container": null,
+            "code": null,
+            "uploaded": null
+        }
+    ],
+    "cycle": [],
+    "cyclecheck": [
+        {
+            "id": 11,
+            "locid": 1445,
+            "partid": 1867,
+            "rawloc": "0",
+            "rawpart": "32",
+            "scanned": "2021-10-19 16:36:10",
+            "ip": "0",
+            "user": null
+        },
+        {
+            "id": 12,
+            "locid": 5080,
+            "partid": 1867,
+            "rawloc": "0",
+            "rawpart": "12",
+            "scanned": "2021-10-19 16:36:10",
+            "ip": "0",
+            "user": null
+        },
+        {
+            "id": 13,
+            "locid": 1445,
+            "partid": 1867,
+            "rawloc": "0",
+            "rawpart": "32",
+            "scanned": "2021-10-19 16:36:39",
+            "ip": "0",
+            "user": null
+        },
+        {
+            "id": 14,
+            "locid": 5080,
+            "partid": 1867,
+            "rawloc": "0",
+            "rawpart": "0",
+            "scanned": "2021-10-19 16:36:39",
+            "ip": "0",
+            "user": null
+        },
+        {
+            "id": 15,
+            "locid": 1445,
+            "partid": 1867,
+            "rawloc": "0",
+            "rawpart": "12",
+            "scanned": "2021-10-19 16:37:50",
+            "ip": "0",
+            "user": null
+        },
+        {
+            "id": 16,
+            "locid": 5080,
+            "partid": 1867,
+            "rawloc": "0",
+            "rawpart": "32",
+            "scanned": "2021-10-19 16:37:50",
+            "ip": "0",
+            "user": null
+        },
+        {
+            "id": 17,
+            "locid": 5080,
+            "partid": 1867,
+            "rawloc": "0",
+            "rawpart": "32",
+            "scanned": "2021-10-19 16:37:50",
+            "ip": "0",
+            "user": null
+        },
+        {
+            "id": 18,
+            "locid": 1445,
+            "partid": 1867,
+            "rawloc": "0",
+            "rawpart": "12",
+            "scanned": "2021-10-19 16:37:50",
+            "ip": "0",
+            "user": null
+        },
+        {
+            "id": 23,
+            "locid": 5080,
+            "partid": 1867,
+            "rawloc": "0",
+            "rawpart": "12",
+            "scanned": "2021-10-20 10:26:42",
+            "ip": "0",
+            "user": null
+        },
+        {
+            "id": 24,
+            "locid": 1445,
+            "partid": 1867,
+            "rawloc": "0",
+            "rawpart": "32",
+            "scanned": "2021-10-20 10:26:42",
+            "ip": "0",
+            "user": null
+        }
+    ],
+    "pickedtoday": [],
+    "notpickedtoday": []
+}
