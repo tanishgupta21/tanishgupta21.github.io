@@ -6,15 +6,16 @@ body {
   font-family: sans-serif;
   padding: 0 10px;
   height: 100%;
-  background: black;
+  background: #4dd0e1;
   margin: 0;
-  color:whitesmoke;
+  color: #2962ff;
+  white-space: nowrap;
 }
 
 h1 {
   margin: 0;
   padding: 15px;
-  font-size: 350%;
+  font-size: 400%;
 }
 
 #container {
@@ -27,25 +28,30 @@ h1 {
   background-color: white;
 }
 
-#idScan {
+#idScan::placeholder{
   font-size: xx-large; 
   text-align: center;
+  background-color: salmon; 
+  border-radius: 5px;
 }
 
+
+#idscan {
+  border: 1px;
+  border-radius: 5px;
+}
 #outputDiv {
   font-size: 30px;
   align-items: center;
   text-align: center;
   font-weight: bold;
-  background-color: grey;
+  background-color: #4dd0e1;
   padding: 10px;
-  color : blue; 
+  color : black; 
 }
 
 input {
   text-align: center;
-  size: 4px;
-  margin: 5px; 
 }
 
 button {
@@ -55,63 +61,39 @@ button {
   padding-right: 30px; 
   width: 100%; 
   padding: 15px;   
-  text-align: center;    
-}
-
-.classLoc {
-  margin-left: 5%; 
+  text-align: center;     
+  background-color: #f48fb1;
+  border-radius: 15px; 
 }
 
 a{
-  color: yellowgreen; 
+  color: #f57c00; 
   text-decoration: underline;  
 }
 
-#locationIdLbl {
-  float: left; 
-  font-size: 25px;
-  width: 20%; 
-
+#tableDiv {
+  font-size: 24px;
 }
 
-#crntQtyLbl {
-  float: left; 
-  font-size: 25px;
-  width: 23%; 
+table input {
+  font-weight: bold !important;
+  color: black !important; 
 }
 
-#totalPickedLbl {
-  float: left; 
-  font-size: 25px;
-  width: 15%;
+table input::placeholder {
+  color: black;
 }
 
-#notPickedQuantityLbl {
-  float: left; 
-  font-size: 25px;
-  width: 20%;
+table {
+  background-color: wheat; 
+  color: black;
 }
 
-#newQuantityLbl {
-  float: left; 
-  font-size: 25px;
-  width: 22%;
+th {
+  text-align: center;
 }
 
-#productIdLbl {
-  float: left; 
-  width: 25%; 
+.newQuantityClass {
+  background-color: aliceblue;
+  color: orange;
 }
-
-#currentQuantityLbl {
-  float: left; 
-  width: 35%; 
-}
-
-#quantityLbl {
-  float: left; 
-  width: 40%; 
-}
-
-
-
