@@ -6,23 +6,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./materialize-admin/app-assets/css/themes/horizontal-menu-template/materialize.css" />
+  <link rel="stylesheet" type="text/css"
+    href="./materialize-admin/app-assets/css/themes/horizontal-menu-template/materialize.css" />
   <link rel="stylesheet" href="src/style.css" />
 </head>
 
 <body>
   <div id="container">
-    <h1> Inventory </h1>
-    <input id="idScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Location/Product ID" onkeyup="typingCheck()" onfocus="this.value=''" autofocus />    
-    <br><br>
+    <header id="headerDiv">
+      <h1> Inventory </h1>
+      <br>
+      <input id="idScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Location/Product ID"
+        onkeyup="typingCheck()" onfocus="this.value=''" autofocus />
+    </header>
+    <hr>
+    <br>
     <h2 id="labelHeading">- - - - -</h2>
+    <br>
     <div id="outputDiv"></div>
     <br>
     <div id="tableDiv"></div>
     <br><br>
 
     <div class="btn-group">
-      <button id="btn3" onclick="clearData()"> Clear </button>
+      <button id="btn3" onclick="clearData()"> Clear </button> <br><br>
     </div>
   </div>
 

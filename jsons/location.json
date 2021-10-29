@@ -1,95 +1,159 @@
 {
-    "id": 1003,
-    "name": "1992 : A08 : 05 : 6L",
+    "id": 2006,
+    "name": "2995 : A15 : 06 : 1L",
     "parts": [
         {
             "cycled": 0,
-            "partid": 6426,
-            "num": "R54132SCB",
+            "partid": 15323,
+            "num": "OCG0771",
             "lgid": 3,
             "qty": 0,
-            "locationid": 4638
+            "locationid": 5641
         },
         {
             "cycled": 0,
-            "partid": 6426,
-            "num": "R54132SCB",
+            "partid": 15323,
+            "num": "OCG0771",
             "lgid": 3,
             "qty": 0,
-            "locationid": 4638
+            "locationid": 5641
         },
         {
             "cycled": 0,
-            "partid": 6426,
-            "num": "R54132SCB",
+            "partid": 15323,
+            "num": "OCG0771",
             "lgid": 3,
             "qty": 0,
-            "locationid": 4638
+            "locationid": 5641
         },
         {
             "cycled": 0,
-            "partid": 1553,
-            "num": "R31245SCB",
+            "partid": 15283,
+            "num": "OCG0686",
+            "lgid": 1,
+            "qty": 0,
+            "locationid": 2006
+        },
+        {
+            "cycled": 0,
+            "partid": 15283,
+            "num": "OCG0686",
+            "lgid": 1,
+            "qty": 0,
+            "locationid": 2006
+        },
+        {
+            "cycled": 0,
+            "partid": 15283,
+            "num": "OCG0686",
+            "lgid": 1,
+            "qty": 0,
+            "locationid": 2006
+        },
+        {
+            "cycled": 0,
+            "partid": 15316,
+            "num": "OCG0751",
+            "lgid": 1,
+            "qty": 36,
+            "locationid": 2006
+        },
+        {
+            "cycled": 0,
+            "partid": 15316,
+            "num": "OCG0751",
+            "lgid": 1,
+            "qty": 36,
+            "locationid": 2006
+        },
+        {
+            "cycled": 0,
+            "partid": 15316,
+            "num": "OCG0751",
+            "lgid": 1,
+            "qty": 36,
+            "locationid": 2006
+        },
+        {
+            "cycled": 0,
+            "partid": 15323,
+            "num": "OCG0771",
+            "lgid": 1,
+            "qty": 16,
+            "locationid": 2006
+        },
+        {
+            "cycled": 0,
+            "partid": 15323,
+            "num": "OCG0771",
+            "lgid": 1,
+            "qty": 16,
+            "locationid": 2006
+        },
+        {
+            "cycled": 0,
+            "partid": 15323,
+            "num": "OCG0771",
+            "lgid": 1,
+            "qty": 16,
+            "locationid": 2006
+        },
+        {
+            "cycled": 0,
+            "partid": 15316,
+            "num": "OCG0751",
             "lgid": 3,
             "qty": 0,
-            "locationid": 4638
+            "locationid": 5641
         },
         {
             "cycled": 0,
-            "partid": 1553,
-            "num": "R31245SCB",
+            "partid": 15316,
+            "num": "OCG0751",
             "lgid": 3,
             "qty": 0,
-            "locationid": 4638
+            "locationid": 5641
         },
         {
             "cycled": 0,
-            "partid": 1553,
-            "num": "R31245SCB",
-            "lgid": 1,
+            "partid": 15316,
+            "num": "OCG0751",
+            "lgid": 3,
             "qty": 0,
-            "locationid": 1003
+            "locationid": 5641
         },
         {
             "cycled": 0,
-            "partid": 1553,
-            "num": "R31245SCB",
-            "lgid": 1,
+            "partid": 15283,
+            "num": "OCG0686",
+            "lgid": 3,
             "qty": 0,
-            "locationid": 1003
+            "locationid": 5641
         },
         {
             "cycled": 0,
-            "partid": 6426,
-            "num": "R54132SCB",
-            "lgid": 1,
-            "qty": 24,
-            "locationid": 1003
+            "partid": 15283,
+            "num": "OCG0686",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 5641
         },
         {
             "cycled": 0,
-            "partid": 6426,
-            "num": "R54132SCB",
-            "lgid": 1,
-            "qty": 24,
-            "locationid": 1003
-        },
-        {
-            "cycled": 0,
-            "partid": 6426,
-            "num": "R54132SCB",
-            "lgid": 1,
-            "qty": 24,
-            "locationid": 1003
+            "partid": 15283,
+            "num": "OCG0686",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 5641
         }
     ],
     "locs": [
         {
-            "id": 1003,
+            "id": 2006,
             "lgid": 1
         },
         {
-            "id": 4638,
+            "id": 5641,
             "lgid": 3
         }
     ]

@@ -1,0 +1,150 @@
+/*  work in progress for a dark theme   */
+
+
+html {
+    height: 100%;
+  }
+  
+  body {
+    font-family: sans-serif;
+    padding: 0 10px;
+    height: 100%;
+    background: black;
+    margin: 0;
+    color:whitesmoke;
+  }
+  
+  h1 {
+    margin: 0;
+    padding: 15px;
+    font-size: 350%;
+  }
+  
+  #container {
+    text-align: center;
+    margin: 0;
+  }
+  
+  #txt1 {
+    color : black;
+    background-color: white;
+  }
+  
+  #idScan {
+    font-size: xx-large; 
+    text-align: center;
+  }
+  
+  #outputDiv {
+    font-size: 30px;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    background-color: grey;
+    padding: 10px;
+    color : blue; 
+  }
+  
+  input {
+    text-align: center;
+    size: 4px;
+    margin: 5px; 
+  }
+  
+  button {
+    font-size: 20px;    
+    font-weight: bold;
+    padding-left: 30px; 
+    padding-right: 30px; 
+    width: 100%; 
+    padding: 15px;   
+    text-align: center;    
+  }
+  
+  a{
+    color: yellowgreen; 
+    text-decoration: underline;  
+  }
+  
+  #locationIdLbl {
+    float: left; 
+    font-size: 25px;
+    width: 20%; 
+  
+  }
+  
+  #crntQtyLbl {
+    float: left; 
+    font-size: 25px;
+    width: 23%; 
+  }
+  
+  #totalPickedLbl {
+    float: left; 
+    font-size: 25px;
+    width: 15%;
+  }
+  
+  #notPickedQuantityLbl {
+    float: left; 
+    font-size: 25px;
+    width: 20%;
+  }
+  
+  #newQuantityLbl {
+    float: left; 
+    font-size: 25px;
+    width: 22%;
+  }
+  
+  
+  
+  #productIdLbl {
+    float: left; 
+    width: 30%; 
+  }
+  
+  #currentQuantityLbl {
+    float: left; 
+    width: 45%; 
+  }
+  
+  #quantityLbl {
+    float: left; 
+    width: 20%; 
+  }
+  
+  
+  .locationIdClass {
+   width:20%
+   
+  }
+  
+  .locationQuantityClass {
+    width:15%
+  }
+  
+  .pickedQuantityClass {
+    width:15%
+  }
+  
+  .notPickedQuantityClass {
+    width:15%
+  }
+  
+  .newQuantityClass {
+    width:19%
+  }
+  
+  .partIdClass{
+  width: 35%;
+  
+  }
+  
+  .partQuantityClass {
+  width: 30%;
+  }
+  
+  .quantityClass {
+  width: 25%;
+  }
