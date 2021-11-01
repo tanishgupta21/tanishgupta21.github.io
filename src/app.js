@@ -48,11 +48,6 @@ const getPartFunctions = function () {
   getLocations(text);
 }
 
-// "namor.club/p.php?loc=xxxx&part=xxxx" - the link to get the qty that has been picked but not packed. total qty for last three months, that was picked from the loc and the part was picked. 
-// different url - different response: can we call two fetches at the same time? yeah we can call another function maybe? make the txt2 global so that it will be updated irrespective of the update. 
-// boring 
-
-
 function getLocations(abc) {
   let txt1 = document.getElementById("outputDiv");     
   url = abc;
@@ -63,7 +58,7 @@ function getLocations(abc) {
     })
     .then((response) => {
       txt1.innerHTML = "";
-      txt1.innerHTML += "<button onclick='partUpdate()'> Update </button><br><br>";
+      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button><br><br>";
       txt2 = ""; 
       txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
       var i = 0;
@@ -75,59 +70,14 @@ function getLocations(abc) {
         txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
         txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.id + "' disabled hidden></td>";
         txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
-        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";        
-        //getPickedUnpicked(document.getElementById()); 
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-        // picked today / have been picked / deducted from the current quantity
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-        // console.log("pickedtoday : " + response.pickedtoday.length);
-        // console.log("notpickedtoday : "+response.notpickedtoday.length);
-        // if (response.pickedtoday.length != 0) {
-        //   j = response.pickedtoday.length;
-        //   let z = 0;
-        //   for (let x = 0; x < j; x++) {
-        //     if (response.loc[i].locationid == response.pickedtoday[x].locationid) {
-        //       txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' value='" + response.pickedtoday[x].totalpicked + "' disabled></td>";
-        //       z++;
-        //     }
-        //   }
-        //   if (z == 0) {
-        //     txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' disabled placeholder='0'></td>";
-        //   }
-        // } else {
-        //   txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' disabled placeholder='0'></td>";
-        // }
-
-        // //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-        // // not picked today / allocated / ordered but not yet picked
-        // //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-        
-        // if (response.notpickedtoday.length != 0) {
-        //   j = response.pickedtoday.length;
-        //   let z = 0;
-        //   for (let x = 0; x < j; x++) {
-        //     if (response.loc[i].locationid == response.notpickedtoday[x].locationid) {
-        //       txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' value='" + response.notpickedtoday[x].qty + "' disabled></td>";
-        //       z++;
-        //     }
-        //   }
-        //   if (z == 0) {
-        //     txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' disabled placeholder='0'></td>";
-        //   }
-        // } else {
-        //   txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' disabled placeholder='0'></td>";
-        // }
-        
-        
+        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";                
         txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
-        txt2 += "<td><button onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
+        txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
         txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='pickedId" + i + "'></div></td><td colspan='2'><div id='unpickedId" + i + "'></div></td><td></td><td></td></tr>"
-        //getPickedUnpicked(i,i);
         numProds++;
         i++;
       }
       document.getElementById("tableDiv").innerHTML = txt2;
-       
       clearField();
     })
     .catch((error) => {
@@ -203,7 +153,7 @@ function getParts(abc) {
     .then((response) => {
       txt1.innerHTML = "";
       txt2 = ""; 
-      txt1.innerHTML += "<button onclick='locationUpdate()'> Update </button><br><br>";
+      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='locationUpdate()'> Update </button><br>";
       txt2 = "<table><th id='productIdLbl'> Product ID </th> <th id='currentQuantityLbl' style='width:100%;'> Current&nbsp;Quantity </th> <th id='quantityLbl'> Quantity </th>";
       var i = 0;
       numLocs = 0;
@@ -242,7 +192,7 @@ function getPartsAgain() {
     })
     .then((response) => {
       txt1.innerHTML = "";
-      txt1.innerHTML += "<button onclick='locationUpdate()'> Update </button><br><br>";
+      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='locationUpdate()'> Update </button><br>";
       txt2 += "<table><th id='productIdLbl'> Product ID </th> <th id='currentQuantityLbl' style='width:100%;'> Current&nbsp;Quantity </th> <th id='quantityLbl'> Quantity </th>";
       var i = 0;
       numLocs = 0;
@@ -284,7 +234,8 @@ function getLocationsAgain(xyz) {
     })
     .then((response) => {
       txt1.innerHTML = "";
-      txt1.innerHTML += "<button onclick='partUpdate()'> Update </button><br><br>";
+      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='getPartsAgain()'> Back </button><br>";
+      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
       txt2 = ""; 
       txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
       var i = 0;
@@ -296,54 +247,10 @@ function getLocationsAgain(xyz) {
         txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
         txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.id + "' disabled hidden></td>";
         txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
-        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";        
-        //getPickedUnpicked(document.getElementById()); 
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-        // picked today / have been picked / deducted from the current quantity
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-        // console.log("pickedtoday : " + response.pickedtoday.length);
-        // console.log("notpickedtoday : "+response.notpickedtoday.length);
-        // if (response.pickedtoday.length != 0) {
-        //   j = response.pickedtoday.length;
-        //   let z = 0;
-        //   for (let x = 0; x < j; x++) {
-        //     if (response.loc[i].locationid == response.pickedtoday[x].locationid) {
-        //       txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' value='" + response.pickedtoday[x].totalpicked + "' disabled></td>";
-        //       z++;
-        //     }
-        //   }
-        //   if (z == 0) {
-        //     txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' disabled placeholder='0'></td>";
-        //   }
-        // } else {
-        //   txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' disabled placeholder='0'></td>";
-        // }
-
-        // //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-        // // not picked today / allocated / ordered but not yet picked
-        // //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-        
-        // if (response.notpickedtoday.length != 0) {
-        //   j = response.pickedtoday.length;
-        //   let z = 0;
-        //   for (let x = 0; x < j; x++) {
-        //     if (response.loc[i].locationid == response.notpickedtoday[x].locationid) {
-        //       txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' value='" + response.notpickedtoday[x].qty + "' disabled></td>";
-        //       z++;
-        //     }
-        //   }
-        //   if (z == 0) {
-        //     txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' disabled placeholder='0'></td>";
-        //   }
-        // } else {
-        //   txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' disabled placeholder='0'></td>";
-        // }
-        
-        
+        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";                
         txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
-        txt2 += "<td><button onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
+        txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
         txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='pickedId" + i + "'></div></td><td colspan='2'><div id='unpickedId" + i + "'></div></td><td></td><td></td></tr>"
-        //getPickedUnpicked(i,i);
         numProds++;
         i++;
       }
@@ -649,4 +556,64 @@ function changeCssAgain(cssFile) {
 //       document.getElementById("tableDiv").innerHTML = txt2; 
 //       clearField();
 
+// *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+
+// "namor.club/p.php?loc=xxxx&part=xxxx" - the link to get the qty that has been picked but not packed. total qty for last three months, that was picked from the loc and the part was picked. 
+// different url - different response: can we call two fetches at the same time? yeah we can call another function maybe? make the txt2 global so that it will be updated irrespective of the update. 
+// boring 
+
+
+
+// *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+
+// old picked and unpicked link function parts 
+
+        //getPickedUnpicked(document.getElementById()); 
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+        // picked today / have been picked / deducted from the current quantity
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+        // console.log("pickedtoday : " + response.pickedtoday.length);
+        // console.log("notpickedtoday : "+response.notpickedtoday.length);
+        // if (response.pickedtoday.length != 0) {
+        //   j = response.pickedtoday.length;
+        //   let z = 0;
+        //   for (let x = 0; x < j; x++) {
+        //     if (response.loc[i].locationid == response.pickedtoday[x].locationid) {
+        //       txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' value='" + response.pickedtoday[x].totalpicked + "' disabled></td>";
+        //       z++;
+        //     }
+        //   }
+        //   if (z == 0) {
+        //     txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' disabled placeholder='0'></td>";
+        //   }
+        // } else {
+        //   txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' disabled placeholder='0'></td>";
+        // }
+
+        // //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+        // // not picked today / allocated / ordered but not yet picked
+        // //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+        
+        // if (response.notpickedtoday.length != 0) {
+        //   j = response.pickedtoday.length;
+        //   let z = 0;
+        //   for (let x = 0; x < j; x++) {
+        //     if (response.loc[i].locationid == response.notpickedtoday[x].locationid) {
+        //       txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' value='" + response.notpickedtoday[x].qty + "' disabled></td>";
+        //       z++;
+        //     }
+        //   }
+        //   if (z == 0) {
+        //     txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' disabled placeholder='0'></td>";
+        //   }
+        // } else {
+        //   txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' disabled placeholder='0'></td>";
+        // }
+        
+
+
       // *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+
+
+
+

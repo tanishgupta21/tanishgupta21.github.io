@@ -6,16 +6,14 @@ header {
   background-color:aquamarine;
   width: 100%;
   padding: 4%;
-
   font-size: x-large; 
-  border-radius: 5px 30px;
 }
 
 body {
   font-family: sans-serif;
   padding: 0 10px;
   height: 100%;
-  background: #4dd0e1;
+  background: whitesmoke;
   margin: 0;
   color: #2962ff;
   white-space: nowrap;
@@ -54,18 +52,19 @@ hr {
   background-color: black; 
 }
 
-#idscan {
-  border: 1px;
-  border-radius: 15px;
-}
 #outputDiv {
   font-size: 30px;
   align-items: center;
-  text-align: center;
-  font-weight: bold;
-  background-color: #4dd0e1;
+
+  background-color: aliceblue;
   padding: 10px;
-  color : black; 
+}
+
+.btn-group {
+  font-size: 30px;
+  background-color: aliceblue;
+  align-items: center;
+  padding: 10px; 
 }
 
 input {
@@ -80,7 +79,8 @@ button {
   width: 100%; 
   padding: 15px;   
   text-align: center;     
-  background-color: wheat;
+  background-color: wheat !important; 
+  color: black !important;
   border-radius: 15px 5px; 
 }
 
@@ -103,7 +103,6 @@ table input::placeholder {
 }
 
 table {
-  background-color: wheat; 
   color: black;
   border-radius: 10px; 
   padding: 12px; 
@@ -125,7 +124,15 @@ tr:nth-child(odd) {
 
 
  .lastrow {
-   background-color: rgb(207, 166, 90);
+   background-color: #00CED1;
  }
 
+.card { 
+  background-color: #B2FFFF; 
+  padding: 1px; 
+}
 
+.card-panel {
+  background-color: #B2FFFF; 
+
+}
