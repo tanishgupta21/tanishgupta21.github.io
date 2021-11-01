@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title> Max Advanced Brakes </title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css"
-    href="./materialize-admin/app-assets/css/themes/horizontal-menu-template/materialize.css" />
-  <link rel="stylesheet" href="src/style.css" />
-</head>
-
-<body>
-  <div id="container">
-    <header id="headerDiv">
-      <h1> Inventory </h1>
+  <head>
+    <title> Max Advanced Brakes </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./materialize-admin/app-assets/css/themes/horizontal-menu-template/materialize.css" />
+    <link rel="stylesheet" id="stylesheet" href="src/style.css" />    
+  </head>
+  <body>
+    <div id="container">
+      <header id="headerDiv">
+        <h1> Inventory </h1>
+        <br>
+        <input id="idScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Location/Product ID"
+          onkeyup="typingCheck()" onfocus="this.value=''" autofocus />
+      </header>
+      <hr>
       <br>
-      <input id="idScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Location/Product ID"
-        onkeyup="typingCheck()" onfocus="this.value=''" autofocus />
-    </header>
-    <hr>
-    <br>
-    <h2 id="labelHeading">- - - - -</h2>
-    <br>
-    <div id="outputDiv"></div>
-    <br>
-    <div id="tableDiv"></div>
-    <br><br>
-
-    <div class="btn-group">
-      <button id="btn3" onclick="clearData()"> Clear </button> <br><br>
+      <h2 id="labelHeading">- - - - -</h2>
+      <br>
+      <div id="outputDiv"></div>
+      <br>
+      <div id="tableDiv"></div>
+      <br>
+      <br>
+      <div class="btn-group">
+        <button id="btn3" onclick="clearData()"> Clear </button> <br><br>
+      </div>
     </div>
-  </div>
-
-  <br><br>
-
-  <script src="./src/app.js" type="application/javascript"></script>
-  <script src="./materialize-admin/src/js/materialize.js" type="text/javascript"></script>
-</body>
-
+    <br>
+    <button id="darkButton" onclick="changeCss('src/darkThemeStyle.css');"> Dark Theme </button>
+    <script src="./src/app.js" type="application/javascript"></script>
+    <script src="./materialize-admin/src/js/materialize.js" type="text/javascript"></script>
+  </body>
 </html>
 
 
