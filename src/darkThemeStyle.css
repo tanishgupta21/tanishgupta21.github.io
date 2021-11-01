@@ -3,11 +3,10 @@ html {
 }
 
 header {
-  background-color:rgb(29, 29, 29);
+  background-color:rgb(29, 29, 29) !important;
   width: 100%;
   padding: 4%;
   font-size: x-large; 
-  border-radius: 5px 30px;
 }
 
 body {
@@ -54,6 +53,7 @@ hr {
 
 #idScan {
   border-radius: 15px;
+  box-shadow: none !important;
 }
 #outputDiv {
   font-size: 30px;

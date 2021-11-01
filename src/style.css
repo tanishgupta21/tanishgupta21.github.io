@@ -3,10 +3,11 @@ html {
 }
 
 header {
-  background-color:aquamarine;
+  background-color: aquamarine !important;
   width: 100%;
   padding: 4%;
-  font-size: x-large; 
+  font-size: x-large;
+  
 }
 
 body {
@@ -118,7 +119,7 @@ th {
 }
 
 input:focus {
-  outline: none !important; 
+  outline: #2962ff !important; 
   border-color: white; 
 }
 .lastrow {
