@@ -116,14 +116,12 @@ th {
   background-color: aliceblue;
   color: orange;
 }
-/* 
-tr:nth-child(odd) {
-  background-color: rgb(202, 178, 134);
+
+input:focus {
+  outline: none !important; 
+  border-color: white; 
 }
- */
-
-
- .lastrow {
+.lastrow {
    background-color: #00CED1;
  }
 
