@@ -58,7 +58,7 @@ function getLocations(abc) {
     })
     .then((response) => {
       txt1.innerHTML = "";
-      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button><br><br>";
+      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
       txt2 = ""; 
       txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
       var i = 0;
