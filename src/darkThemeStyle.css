@@ -58,11 +58,14 @@ hr {
 #outputDiv {
   font-size: 30px;
   align-items: center;
-  text-align: center;
-  font-weight: bold;
   background-color: black;
   padding: 10px;
-  color : black; 
+}
+
+.btn-group {
+  font-size: 30px;
+  align-items: center; 
+  padding: 10px;
 }
 
 input {
