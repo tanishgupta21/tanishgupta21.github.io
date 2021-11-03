@@ -16,7 +16,7 @@ console.log("localStorage - divNo : " + localStorage.getItem("divNo"));
 
 const typingCheck = function () {
   if (searchTimeout != undefined) clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(firstfunction, 250);
+  searchTimeout = setTimeout(firstfunction, 1000);
 }
 
 
@@ -50,7 +50,7 @@ const getPartFunctions = function () {
 
 function getLocations(abc) {
   let txt1 = document.getElementById("outputDiv");     
-  url = abc;
+  url = "https://namor.club/p.php?" + abc;
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error("An error occured");
