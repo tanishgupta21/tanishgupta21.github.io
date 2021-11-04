@@ -1,8 +1,8 @@
 {
     "status": "OK",
     "ex": {
-        "id": 6670,
-        "num": "R54181ONZ",
+        "id": 14333,
+        "num": "R980630ONZ",
         "des": "Premium OE Rotor",
         "variantid": 4,
         "typeid": 1,
@@ -13,133 +13,64 @@
         "basenum": null,
         "created": "2020-06-29 17:39:00",
         "mavg": 0,
-        "deflocal": 5256,
+        "deflocal": 5458,
         "active": 1,
-        "weight_lbs": "14.33",
+        "weight_lbs": "27.56",
         "origin": null,
-        "costid": 4430,
-        "name": "2610 : A12 : 03 : 4L",
+        "costid": 6339,
+        "name": "2812 : A14 : 11 : 3R",
         "lgid": 3
     },
     "upc": [
         {
-            "upc": "665083116576"
-        },
-        {
-            "upc": "702669007900"
-        },
-        {
-            "upc": "809225300373"
+            "upc": "803242007765"
         }
     ],
     "loc": [
         {
-            "id": 149262,
-            "locationid": 286,
+            "id": 88241,
+            "locationid": 283,
             "qty": 0,
-            "loc": "1275 : A03 : 02 : 1L",
+            "loc": "1272 : A03 : 01 : 3R",
             "lg": "RESTOCK"
         },
         {
-            "id": 77969,
-            "locationid": 292,
+            "id": 99139,
+            "locationid": 3918,
             "qty": 0,
-            "loc": "1281 : A03 : 02 : 4R",
-            "lg": "RESTOCK"
-        },
-        {
-            "id": 99271,
-            "locationid": 3927,
-            "qty": 0,
-            "loc": "1281 : A03 : 02 : 4R",
+            "loc": "1272 : A03 : 01 : 3R",
             "lg": "LOCAL PURCHASE"
         },
         {
-            "id": 77135,
-            "locationid": 334,
+            "id": 91765,
+            "locationid": 596,
             "qty": 0,
-            "loc": "1323 : A03 : 06 : 2R",
+            "loc": "1585 : A05 : 08 : 2R",
             "lg": "RESTOCK"
         },
         {
-            "id": 99319,
-            "locationid": 3969,
+            "id": 121343,
+            "locationid": 4231,
             "qty": 0,
-            "loc": "1323 : A03 : 06 : 2R",
+            "loc": "1585 : A05 : 08 : 2R",
             "lg": "LOCAL PURCHASE"
         },
         {
-            "id": 78706,
-            "locationid": 420,
-            "qty": 0,
-            "loc": "1409 : A04 : 11 : 1L",
-            "lg": "RESTOCK"
-        },
-        {
-            "id": 101576,
-            "locationid": 4055,
-            "qty": 0,
-            "loc": "1409 : A04 : 11 : 1L",
-            "lg": "LOCAL PURCHASE"
-        },
-        {
-            "id": 169928,
-            "locationid": 499,
-            "qty": 76,
-            "loc": "1488 : A04 : 03 : 5R",
-            "lg": "RESTOCK"
-        },
-        {
-            "id": 151644,
-            "locationid": 511,
-            "qty": 0,
-            "loc": "1500 : A04 : 02 : 3R",
-            "lg": "RESTOCK"
-        },
-        {
-            "id": 150068,
-            "locationid": 624,
-            "qty": 0,
-            "loc": "1613 : A05 : 11 : 4R",
-            "lg": "RESTOCK"
-        },
-        {
-            "id": 157260,
-            "locationid": 632,
-            "qty": 0,
-            "loc": "1621 : A05 : 12 : 5L",
-            "lg": "RESTOCK"
-        },
-        {
-            "id": 154733,
-            "locationid": 821,
-            "qty": 156,
-            "loc": "1810 : A07 : 05 : 1R",
-            "lg": "RESTOCK"
-        },
-        {
-            "id": 2942,
-            "locationid": 1621,
-            "qty": 48,
-            "loc": "2610 : A12 : 03 : 4L",
+            "id": 5462,
+            "locationid": 1823,
+            "qty": 1,
+            "loc": "2812 : A14 : 11 : 3R",
             "lg": "WAREHOUSE"
         },
         {
-            "id": 2943,
-            "locationid": 5256,
-            "qty": 0,
-            "loc": "2610 : A12 : 03 : 4L",
+            "id": 52649,
+            "locationid": 5458,
+            "qty": 8,
+            "loc": "2812 : A14 : 11 : 3R",
             "lg": "LOCAL PURCHASE"
         },
         {
-            "id": 75789,
-            "locationid": 7267,
-            "qty": 0,
-            "loc": "cancelation",
-            "lg": "WAREHOUSE"
-        },
-        {
-            "id": 76831,
+            "id": 86883,
             "locationid": 3,
             "qty": 0,
             "loc": "Receiving",
@@ -147,263 +78,29 @@
         }
     ],
     "landed": {
-        "costusd": "9.44",
-        "costcad": "11.05"
+        "costusd": "18.60",
+        "costcad": "21.10"
     },
     "partcat": false,
     "fifo": {
-        "id": 4430,
-        "created": "2021-06-08 19:58:41",
+        "id": 6339,
+        "created": "2021-06-08 19:58:56",
         "poitemid": null,
-        "updated": "2021-10-29 13:16:32",
-        "partid": 6670,
-        "qty": 64,
+        "updated": "2021-11-02 07:00:05",
+        "partid": 14333,
+        "qty": 25,
         "qty_left": 0,
-        "finished": "2021-10-29 13:16:32",
+        "finished": "2021-11-02 07:00:05",
         "cost_cad_part": null,
         "cost_cad_freight": "0.00",
         "cost_cad_customs": "0.00",
-        "cost_cad_final_per": "12.27",
-        "cost_usd_final_per": "9.44",
+        "cost_cad_final_per": "24.18",
+        "cost_usd_final_per": "18.60",
         "container": null,
         "code": null,
         "uploaded": null
     },
-    "fifolist": [
-        {
-            "id": 10629,
-            "created": "2021-08-17 09:19:25",
-            "poitemid": 26416,
-            "updated": "2021-08-17 09:19:25",
-            "partid": 6670,
-            "qty": 156,
-            "qty_left": 156,
-            "finished": null,
-            "cost_cad_part": null,
-            "cost_cad_freight": "0.00",
-            "cost_cad_customs": "0.00",
-            "cost_cad_final_per": "15.71",
-            "cost_usd_final_per": "12.50",
-            "container": null,
-            "code": "HL06821",
-            "uploaded": null
-        },
-        {
-            "id": 10684,
-            "created": "2021-08-17 16:10:18",
-            "poitemid": 26534,
-            "updated": "2021-08-17 16:10:18",
-            "partid": 6670,
-            "qty": 156,
-            "qty_left": 156,
-            "finished": null,
-            "cost_cad_part": null,
-            "cost_cad_freight": "0.00",
-            "cost_cad_customs": "0.00",
-            "cost_cad_final_per": "14.67",
-            "cost_usd_final_per": "11.67",
-            "container": null,
-            "code": "HL07621",
-            "uploaded": null
-        },
-        {
-            "id": 11544,
-            "created": "2021-09-02 13:21:03",
-            "poitemid": 28308,
-            "updated": "2021-09-02 13:21:03",
-            "partid": 6670,
-            "qty": 78,
-            "qty_left": 78,
-            "finished": null,
-            "cost_cad_part": null,
-            "cost_cad_freight": "0.00",
-            "cost_cad_customs": "0.00",
-            "cost_cad_final_per": "16.39",
-            "cost_usd_final_per": "13.00",
-            "container": null,
-            "code": "210614",
-            "uploaded": null
-        },
-        {
-            "id": 11589,
-            "created": "2021-09-02 13:21:03",
-            "poitemid": 28353,
-            "updated": "2021-09-02 13:21:03",
-            "partid": 6670,
-            "qty": 156,
-            "qty_left": 156,
-            "finished": null,
-            "cost_cad_part": null,
-            "cost_cad_freight": "0.00",
-            "cost_cad_customs": "0.00",
-            "cost_cad_final_per": "17.22",
-            "cost_usd_final_per": "13.67",
-            "container": null,
-            "code": "HL11021",
-            "uploaded": null
-        }
-    ],
+    "fifolist": [],
     "cycle": [],
-    "cyclecheck": [
-        {
-            "id": 46,
-            "locid": 286,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 47,
-            "locid": 334,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 48,
-            "locid": 3969,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 49,
-            "locid": 292,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 50,
-            "locid": 3927,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 51,
-            "locid": 420,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 52,
-            "locid": 4055,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 53,
-            "locid": 821,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 54,
-            "locid": 632,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 55,
-            "locid": 499,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 56,
-            "locid": 511,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 57,
-            "locid": 1621,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 58,
-            "locid": 624,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 59,
-            "locid": 7267,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 60,
-            "locid": 5256,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "57",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 61,
-            "locid": 3,
-            "partid": 6670,
-            "rawloc": "0",
-            "rawpart": "",
-            "scanned": "2021-10-27 10:23:46",
-            "ip": "0",
-            "user": null
-        }
-    ]
+    "cyclecheck": []
 }

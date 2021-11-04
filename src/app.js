@@ -3,11 +3,10 @@ var scans = [];
 var numProds = 0;
 var numLocs = 0;
 var scannedId;
-var searchTimeout;
+var searchTimeout; //8032,4202,4809
 const idScan = document.getElementById("idScan");
 const labelHeading = document.getElementById("labelHeading");
-localStorage.setItem("divNo", 0); 
-console.log("localStorage - divNo : " + localStorage.getItem("divNo"));
+localStorage.setItem("divNo", 0);
 
 //********************************************************************************************************************************************************************************************************************************* */
 //   Typing check function - check when the user has stopped typing in the input field and calls first function when the user stops 
@@ -29,12 +28,73 @@ const firstfunction = function () {
   var text = idScan.value;
   var varCheck = /[a-zA-z]/g; // using regex to compare strings and numbers in the string, won't work when scan location=recieving or shipping (location with any alphabets)
   if (varCheck.test(text)) {
+    //call the parts functions through the product code 
     getPartFunctions();
   }
   else {
-    getLocationFunctions();
+    if (text.length == 12) {
+      //call the parts function through the UPC code. 
+      getPartFunctionsUpc();
+    }
+    else {
+      //call the location fucnctions
+      getLocationFunctions();
+    }
+
   }
 }
+
+
+
+//********************************************************************************************************************************************************************************************************************************* */
+//    FIELD UPDATE WHEN SCAN PRODUCT ID - shows the locations where the products are available when the product id is scanned, when the UPC is scanned. 
+//********************************************************************************************************************************************************************************************************************************* */
+
+
+const getPartFunctionsUpc = function () {
+  let text = idScan.value;
+  localStorage.setItem("id", text);
+  getLocationsUpc(text);
+}
+
+function getLocationsUpc(abc) {
+  let txt1 = document.getElementById("outputDiv");
+  url = "https://namor.club/p.php?" + abc;
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) throw new Error("An error occured");
+      return response.json();
+    })
+    .then((response) => {
+      txt1.innerHTML = "";
+      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
+      txt2 = "";
+      txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
+      var i = 0;
+      var j = 0;
+      numProds = 0;
+      labelHeading.innerHTML = "Part ID : " + response.ex.num;
+      let length = response.loc.length;
+      while (i < length) {
+        txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
+        txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
+        txt2 += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
+        txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
+        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
+        txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
+        txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
+        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='pickedId" + i + "'></div></td><td colspan='2'><div id='unpickedId" + i + "'></div></td><td></td><td></td></tr>"
+        numProds++;
+        i++;
+      }
+      document.getElementById("tableDiv").innerHTML = txt2;
+      clearField();
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+}
+
 
 
 //********************************************************************************************************************************************************************************************************************************* */
@@ -49,8 +109,8 @@ const getPartFunctions = function () {
 }
 
 function getLocations(abc) {
-  let txt1 = document.getElementById("outputDiv");     
-  url = "https://namor.club/p.php?" + abc;
+  let txt1 = document.getElementById("outputDiv");
+  url = abc;
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error("An error occured");
@@ -59,7 +119,7 @@ function getLocations(abc) {
     .then((response) => {
       txt1.innerHTML = "";
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
-      txt2 = ""; 
+      txt2 = "";
       txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
       var i = 0;
       var j = 0;
@@ -68,9 +128,10 @@ function getLocations(abc) {
       let length = response.loc.length;
       while (i < length) {
         txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
-        txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.id + "' disabled hidden></td>";
+        txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
+        txt2 += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
         txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
-        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";                
+        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
         txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
         txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
         txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='pickedId" + i + "'></div></td><td colspan='2'><div id='unpickedId" + i + "'></div></td><td></td><td></td></tr>"
@@ -91,41 +152,46 @@ function getLocations(abc) {
 //********************************************************************************************************************************************************************************************************************************* */
 
 
-function getPickedUnpicked(locid, partid){
-  document.getElementById("pickedId" + localStorage.getItem("divNo")).innerHTML = "";  
+function getPickedUnpicked(locid, partid) {
+  document.getElementById("pickedId" + localStorage.getItem("divNo")).innerHTML = "";
   document.getElementById("unpickedId" + localStorage.getItem("divNo")).innerHTML = "";
-  document.getElementById("lastrow" + localStorage.getItem("divNo")).style.display = "none"; 
-  localStorage.setItem("divNo", locid); 
-  document.getElementById("lastrow" + locid).style.display = "table-row"; 
+  document.getElementById("lastrow" + localStorage.getItem("divNo")).style.display = "none";
+  localStorage.setItem("divNo", locid);
+  document.getElementById("lastrow" + locid).style.display = "table-row";
 
-  var locationid = document.getElementById('locid' + locid).value;
+  var locationid = document.getElementById('locationid' + locid).value;
   var partsid = document.getElementById('partid' + partid).value;
-  console.log("locid: " + locationid); 
-  console.log("partid: " + partsid); 
-  let txt3 = ""; 
-  let txt4 = ""; 
-  url = "https://namor.club/p.php?loc=" + locationid + "&part=" + partid; 
+  console.log("locid : " + locationid);
+  console.log("partid : " + partsid);
+  let txt3 = "";
+  let txt4 = "";
+  url = "https://namor.club/p.php?loc=" + locationid + "&part=" + partsid;
+  console.log("url: " + url)
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error("An error occured");
       return response.json();
     })
     .then((response) => {
-      if(response.totalpicked != null){
-      txt3 = "Picked : <input id='picked' type='number' value='" + response.totalpicked + "' style='width:70%;'>"; 
-      txt4 = "Unpicked : <input id='picked' type='number' style='width:70%;'>"; 
-    }
-      else
-      txt3 = "Picked : <input id='picked' type='number' value='0' style='width:70%;'>"; 
-      txt4 += "Unpicked : <input id='picked' type='number' value='0' style='width:70%;'>"; 
-      document.getElementById("pickedId" + locid).innerHTML = txt3; 
-      document.getElementById("unpickedId" + locid).innerHTML = txt4; 
+      if (response.totalpicked != null) {
+        txt3 = "Picked : <input id='picked' type='number' value='" + response.totalpicked + "' style='width:70%;' disabled>";        
+      }
+      else {
+        txt3 = "Picked : <input id='picked' type='number' value='0' style='width:70%;' disabled>";
+      }
+      if (response.totalnotpicked != null) {
+        txt4 = "Unpicked : <input id='unpicked' type='number' value='" + response.totalnotpicked + "' style='width:70%;' disabled>";
+      }
+      else {        
+        txt4 = "Unpicked : <input id='unpicked' type='number' value='0' style='width:70%;' disabled>";
+      }
+      document.getElementById("pickedId" + locid).innerHTML = txt3;
+      document.getElementById("unpickedId" + locid).innerHTML = txt4;
       clearField();
     })
     .catch((error) => {
       console.log(error.message);
     });
-
 }
 
 
@@ -143,7 +209,7 @@ const getLocationFunctions = function () {
 
 function getParts(abc) {
   let txt1 = document.getElementById("outputDiv");
-  let txt2 = ""; 
+  let txt2 = "";
   url = "https://namor.club/p.php?loc=" + abc;
   fetch(url)
     .then((response) => {
@@ -152,7 +218,7 @@ function getParts(abc) {
     })
     .then((response) => {
       txt1.innerHTML = "";
-      txt2 = ""; 
+      txt2 = "";
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='locationUpdate()'> Update </button><br>";
       txt2 = "<table><th id='productIdLbl'> Product ID </th> <th id='currentQuantityLbl' style='width:100%;'> Current&nbsp;Quantity </th> <th id='quantityLbl'> Quantity </th>";
       var i = 0;
@@ -167,11 +233,59 @@ function getParts(abc) {
         numLocs++;
         i++;
       }
-      document.getElementById("tableDiv").innerHTML = txt2; 
+      document.getElementById("tableDiv").innerHTML = txt2;
       clearField();
     })
     .catch((error) => {
       console.log(error);
+    });
+}
+
+
+//********************************************************************************************************************************************************************************************************************************* */
+//   function - getLocationsAgain - calls the getLocations function when you click on the product links on the locations page, attached to locationFunction page. 
+//********************************************************************************************************************************************************************************************************************************* */
+
+
+function getLocationsAgain(xyz) {
+  var partid = document.getElementById("partid" + xyz).innerHTML;
+  let txt1 = document.getElementById("outputDiv");
+  let txt2 = "";
+  console.log("partid: " + partid); 
+  url = "https://namor.club/p.php?" + partid;
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) throw new Error("An error occured");
+      return response.json();
+    })
+    .then((response) => {
+      txt1.innerHTML = "";
+      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='getPartsAgain()'> Back </button><br>";
+      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
+      txt2 = "";
+      txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
+      var i = 0;
+      var j = 0;
+      numProds = 0;
+      labelHeading.innerHTML = "Part ID : " + response.ex.num;
+      let length = response.loc.length;
+      while (i < length) {
+        txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
+        txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
+        txt2 += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
+        txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
+        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
+        txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
+        txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
+        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='pickedId" + i + "'></div></td><td colspan='2'><div id='unpickedId" + i + "'></div></td><td></td><td></td></tr>"
+        numProds++;
+        i++;
+      }
+      document.getElementById("tableDiv").innerHTML = txt2;
+      clearField();
+    })
+    .catch((error) => {
+      console.log(error.message);
     });
 }
 
@@ -206,59 +320,11 @@ function getPartsAgain() {
         numLocs++;
         i++;
       }
-      document.getElementById("tableDiv").innerHTML = txt2; 
+      document.getElementById("tableDiv").innerHTML = txt2;
       clearField();
     })
     .catch((error) => {
       console.log(error);
-    });
-}
-
-
-//********************************************************************************************************************************************************************************************************************************* */
-//   function - getLocationsAgain - calls the getLocations function when you click on the product links on the locations page, attached to locationFunction page. 
-//********************************************************************************************************************************************************************************************************************************* */
-
-
-function getLocationsAgain(xyz) {
-  var def = document.getElementById("partid" + xyz).innerHTML;
-  console.log("def " + def);
-  let txt1 = document.getElementById("outputDiv");
-  let txt2 = ""; 
-  url = "https://namor.club/p.php?" + def;
-  console.log("url " + url);
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) throw new Error("An error occured");
-      return response.json();
-    })
-    .then((response) => {
-      txt1.innerHTML = "";
-      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='getPartsAgain()'> Back </button><br>";
-      txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
-      txt2 = ""; 
-      txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
-      var i = 0;
-      var j = 0;
-      numProds = 0;
-      labelHeading.innerHTML = "Part ID : " + response.ex.num;
-      let length = response.loc.length;
-      while (i < length) {
-        txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
-        txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.id + "' disabled hidden></td>";
-        txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
-        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";                
-        txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
-        txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
-        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='pickedId" + i + "'></div></td><td colspan='2'><div id='unpickedId" + i + "'></div></td><td></td><td></td></tr>"
-        numProds++;
-        i++;
-      }
-      document.getElementById("tableDiv").innerHTML = txt2; 
-      clearField();
-    })
-    .catch((error) => {
-      console.log(error.message);
     });
 }
 
@@ -274,8 +340,6 @@ function partUpdate() {
     var locationid = document.getElementById('locid' + j).value;
     var partid = document.getElementById('partid' + j).value;
     var newqty = document.getElementById('newqty' + j).value;
-    console.log("locid: " + locationid);
-    console.log("partid: " + partid);
     const url = "https://namor.club/p.php";
     let data = {
       locid: locationid,
@@ -366,14 +430,14 @@ const clearField = function () {
 
 
 function changeCss(cssFile) {
-  console.log("cssfile : " + cssFile); 
+  console.log("cssfile : " + cssFile);
   //console.log("csslinkindex : " + cssLinkIndex); 
   console.log("darkTheme was toggled");
 
-  var stylesheet = document.getElementById("stylesheet"); 
-  stylesheet.setAttribute('href', cssFile); 
+  var stylesheet = document.getElementById("stylesheet");
+  stylesheet.setAttribute('href', cssFile);
   document.getElementById("darkButton").setAttribute("onClick", "javascript: changeCssAgain('src/style.css');");
-  document.getElementById("darkButton").innerHTML = "Light Theme"; 
+  document.getElementById("darkButton").innerHTML = "Light Theme";
 }
 
 
@@ -383,14 +447,14 @@ function changeCss(cssFile) {
 
 
 function changeCssAgain(cssFile) {
-  console.log("cssfile : " + cssFile); 
+  console.log("cssfile : " + cssFile);
   //console.log("csslinkindex : " + cssLinkIndex); 
   console.log("darkTheme was toggled");
 
-  var stylesheet = document.getElementById("stylesheet"); 
-  stylesheet.setAttribute('href', cssFile); 
+  var stylesheet = document.getElementById("stylesheet");
+  stylesheet.setAttribute('href', cssFile);
   document.getElementById("darkButton").setAttribute("onClick", "javascript: changeCss('src/darkThemeStyle.css');");
-  document.getElementById("darkButton").innerHTML = "Dark Theme"; 
+  document.getElementById("darkButton").innerHTML = "Dark Theme";
 }
 
 
@@ -406,18 +470,18 @@ function changeCssAgain(cssFile) {
 
 /*
 
-  - if you scan a product ID: it calls the partFunctions. which in turn calls the getLocationFunction. it doesn't goes anywhere after that. 
-  - if you scan a location ID: it calls the locationFunctions, which in turns the calls the getPartsfunctions. 
-   - you can select the part num and see its details. 
+  - if you scan a product ID: it calls the partFunctions. which in turn calls the getLocationFunction. it doesn't goes anywhere after that.
+  - if you scan a location ID: it calls the locationFunctions, which in turns the calls the getPartsfunctions.
+   - you can select the part num and see its details.
    - you can also go back and forth.
-  
-  - clear button calls the clearData function. which clears all of the details, all the fields. 
-   - makes the app like new. 
 
-  - things to add:- 
+  - clear button calls the clearData function. which clears all of the details, all the fields.
+   - makes the app like new.
+
+  - things to add:-
    - dark mode
-   - better colours for the light mode. 
-   - 
+   - better colours for the light mode.
+   -
 
 */
 
@@ -533,7 +597,7 @@ function changeCssAgain(cssFile) {
 //         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 //         // not picked today / allocated / ordered but not yet picked
 //         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-        
+
 //         if (response.notpickedtoday.length != 0) {
 //           j = response.pickedtoday.length;
 //           let z = 0;
@@ -593,7 +657,7 @@ function changeCssAgain(cssFile) {
         // //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
         // // not picked today / allocated / ordered but not yet picked
         // //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-        
+
         // if (response.notpickedtoday.length != 0) {
         //   j = response.pickedtoday.length;
         //   let z = 0;
@@ -609,7 +673,7 @@ function changeCssAgain(cssFile) {
         // } else {
         //   txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' disabled placeholder='0'></td>";
         // }
-        
+
 
 
       // *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
