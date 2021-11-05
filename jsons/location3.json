@@ -1,0 +1,96 @@
+{
+    "id": 1826,
+    "name": "2815 : A14 : 10 : 1L",
+    "parts": [
+        {
+            "cycled": 0,
+            "partid": 13933,
+            "num": "R31595ONZ",
+            "lgid": 1,
+            "qty": 44,
+            "locationid": 1826
+        },
+        {
+            "cycled": 0,
+            "partid": 5000,
+            "num": "R34424ONZ",
+            "lgid": 1,
+            "qty": 0,
+            "locationid": 1826
+        },
+        {
+            "cycled": 0,
+            "partid": 5000,
+            "num": "R34424ONZ",
+            "lgid": 1,
+            "qty": 0,
+            "locationid": 1826
+        },
+        {
+            "cycled": 0,
+            "partid": 5007,
+            "num": "R34425ONZ",
+            "lgid": 1,
+            "qty": 0,
+            "locationid": 1826
+        },
+        {
+            "cycled": 0,
+            "partid": 5007,
+            "num": "R34425ONZ",
+            "lgid": 1,
+            "qty": 0,
+            "locationid": 1826
+        },
+        {
+            "cycled": 0,
+            "partid": 13933,
+            "num": "R31595ONZ",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 5461
+        },
+        {
+            "cycled": 0,
+            "partid": 5000,
+            "num": "R34424ONZ",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 5461
+        },
+        {
+            "cycled": 0,
+            "partid": 5000,
+            "num": "R34424ONZ",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 5461
+        },
+        {
+            "cycled": 0,
+            "partid": 5007,
+            "num": "R34425ONZ",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 5461
+        },
+        {
+            "cycled": 0,
+            "partid": 5007,
+            "num": "R34425ONZ",
+            "lgid": 3,
+            "qty": 0,
+            "locationid": 5461
+        }
+    ],
+    "locs": [
+        {
+            "id": 1826,
+            "lgid": 1
+        },
+        {
+            "id": 5461,
+            "lgid": 3
+        }
+    ]
+}
