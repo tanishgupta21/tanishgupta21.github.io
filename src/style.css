@@ -123,6 +123,7 @@ input:focus {
 }
 .lastrow {
    background-color: #00CED1;
+   font-size: large;
  }
 
 .card { 

@@ -82,7 +82,7 @@ function getLocationsUpc(abc) {
         txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
         txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
         txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
-        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='pickedId" + i + "'></div></td><td colspan='2'><div id='unpickedId" + i + "'></div></td><td></td><td></td></tr>"
+        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='unpickedId" + i + "'></div></td><td colspan='2'><div id='unpickedIdWh" + i  + "'></div></td><td colspan='2'><div id='pickedId" + i + "'></div></td></tr>"
         numProds++;
         i++;
       }
@@ -133,7 +133,7 @@ function getLocations(abc) {
         txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
         txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
         txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
-        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='pickedId" + i + "'></div></td><td colspan='2'><div id='unpickedId" + i + "'></div></td><td></td><td></td></tr>"
+        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='unpickedId" + i + "'></div></td><td colspan='2'><div id='unpickedIdWh" + i  + "'></div></td><td colspan='2'><div id='pickedId" + i + "'></div></td></tr>"
         numProds++;
         i++;
       }
@@ -164,8 +164,9 @@ function getPickedUnpicked(locid, partid) {
   console.log("partid : " + partsid);
   let txt3 = "";
   let txt4 = "";
+  let txt5 = ""; 
   url = "https://namor.club/p.php?loc=" + locationid + "&part=" + partsid;
-  console.log("url: " + url)
+  //console.log("url: " + url)
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error("An error occured");
@@ -173,19 +174,28 @@ function getPickedUnpicked(locid, partid) {
     })
     .then((response) => {
       if (response.totalpicked != null) {
-        txt3 = "Picked : <input id='picked' type='number' value='" + response.totalpicked + "' style='width:70%;' disabled>";        
+        txt3 = "Picked : <input id='picked' type='number' value='" + response.totalpicked + "' style='width:40%;' disabled>";        
       }
       else {
-        txt3 = "Picked : <input id='picked' type='number' value='0' style='width:70%;' disabled>";
+        txt3 = "Picked : <input id='picked' type='number' value='0' style='width:40%;' disabled>";
       }
       if (response.totalnotpicked != null) {
-        txt4 = "Unpicked : <input id='unpicked' type='number' value='" + response.totalnotpicked + "' style='width:70%;' disabled>";
+        txt4 = "Unpicked : <input id='unpicked' type='number' value='" + response.totalnotpicked + "' style='width:40%;' disabled>";
       }
       else {        
-        txt4 = "Unpicked : <input id='unpicked' type='number' value='0' style='width:70%;' disabled>";
+        txt4 = "Unpicked : <input id='unpicked' type='number' value='0' style='width:40%;' disabled>";
+      }
+      if (response.totalnotpickedwh != null) {
+        txt5 = "Unpicked WH : <input id='unpicked' type='number' value='" + response.totalnotpickedwh + "' style='width:40%;' disabled>";
+      }
+      else {        
+        txt5 = "Unpicked WH : <input id='unpicked' type='number' value='0' style='width:40%;' disabled>";
       }
       document.getElementById("pickedId" + locid).innerHTML = txt3;
       document.getElementById("unpickedId" + locid).innerHTML = txt4;
+      document.getElementById("unpickedIdWh" + locid).innerHTML = txt5;
+      //totalnotpickedwh: not picked quantity of the products in the wholesale orders 
+      
       clearField();
     })
     .catch((error) => {
@@ -276,7 +286,7 @@ function getLocationsAgain(xyz) {
         txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
         txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
         txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
-        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='pickedId" + i + "'></div></td><td colspan='2'><div id='unpickedId" + i + "'></div></td><td></td><td></td></tr>"
+        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='unpickedId" + i + "'></div></td><td colspan='2'><div id='unpickedIdWh" + i  + "'></div></td><td colspan='2'><div id='pickedId" + i + "'></div></td></tr>"
         numProds++;
         i++;
       }
