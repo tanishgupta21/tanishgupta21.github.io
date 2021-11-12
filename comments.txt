@@ -156,3 +156,282 @@ function getLocations(abc) {
 
 //*************************************************************************************************************************************************************************************
 //*************************************************************************************************************************************************************************************
+
+
+
+
+// *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+//   comments : how the program works - a brief introduction 
+// *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+
+/*
+
+  - if you scan a product ID: it calls the partFunctions. which in turn calls the getLocationFunction. it doesn't goes anywhere after that.
+  - if you scan a location ID: it calls the locationFunctions, which in turns the calls the getPartsfunctions.
+   - you can select the part num and see its details.
+   - you can also go back and forth.
+
+  - clear button calls the clearData function. which clears all of the details, all the fields.
+   - makes the app like new.
+
+  - things to add:-
+   - dark mode
+   - better colours for the light mode.
+   -
+
+*/
+
+
+
+// *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+//  ROUGH WORK - TESTING AREA 
+// *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+
+// function testFunction() {
+// 
+//   let txt1 = document.getElementById("outputDiv");
+//   txt1.innerHTML = "";
+//   txt1.innerHTML += "<button onclick='partUpdate()'> Update </button><br><br>";
+//   txt1.innerHTML += "<label style='float:left'> Location ID </label> <label style='float:left'> Current Qty </label> <label style='float:left'> Total Picked </label> <label style='float:left'> Not Picked </label> <label style='float:left'> New Qty </label><br><br><br>";
+//   var i = 0;
+//   var j = 0;
+//   numProds = 0;
+//   labelHeading.innerHTML = "Part ID : " + product.ex.num;
+//   let length = product.loc.length;
+//   while (i < length) {
+//     txt1.innerHTML += "<input id='locid" + i + "' type='text' value='" + product.loc[i].locationid + "' disabled style='font-size:25px; float:left; color:black' size='8'>";
+//     txt1.innerHTML += "<input id='partid" + i + "' type='text' value='" + product.ex.id + "' disabled style='font-size:25px; color:black' hidden>";
+//     txt1.innerHTML += "<input class='classLoc' id='locqty" + i + "' type'text' value='" + product.loc[i].qty + "' style='font-size:25px; float:left;' disabled size='8'>";
+//     if (product.pickedtoday.length != 0) {
+//       j = product.pickedtoday.length;
+//       let z = 0;
+//       for (let x = 0; x < j; x++) {
+//         if (product.loc[i].locationid == product.pickedtoday[x].locationid) {
+//           txt1.innerHTML += "<input id='pickedqty' type='text' value='" + product.pickedtoday[x].totalpicked + "' style='font-size:25px; color:black; float:left;' size='8' disabled>";
+//           z++;
+//         }
+//       }
+//       if (z == 0) {
+//         txt1.innerHTML += "<input id='pickedqty' type='text' style='font-size:25px; float:left;' size='8' disabled placeholder='0'>";
+//       }
+//     } else {
+//       txt1.innerHTML += "<input id='pickedqty' type='text' style='font-size:25px; float:left;' size='8' disabled placeholder='0'>";
+//     }
+//     //not pickedtoday
+//     if (product.notpickedtoday.length != 0) {
+//       j = product.pickedtoday.length;
+//       let z = 0;
+//       for (let x = 0; x < j; x++) {
+//         if (product.loc[i].locationid == product.notpickedtoday[x].locationid) {
+//           txt1.innerHTML += "<input id='pickedqty' type='text' value='" + product.notpickedtoday[x].totalpicked + "' style='font-size:25px; color:black; float:left;' size='8' disabled>";
+//           z++;
+//         }
+//       }
+//       if (z == 0) {
+//         txt1.innerHTML += "<input id='pickedqty' type='text' style='font-size:25px; float:left;' size='8' disabled placeholder='0'>";
+//       }
+//     } else {
+//       txt1.innerHTML += "<input id='pickedqty' type='text' style='font-size:25px; float:left;' size='8' disabled placeholder='0'>";
+//     }
+//     txt1.innerHTML += "<input id='newqty" + i + "' type='text' style='font-size:25px; float:right;' size='8'><br><br>";        
+//     numProds++;
+//     i++;
+//   }
+//   clearField();
+
+
+// }
+
+
+
+
+
+
+
+
+// *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+
+
+
+
+
+
+// txt1.innerHTML = "";
+//       txt1.innerHTML += "<button onclick='partUpdate()'> Update </button><br><br>";
+//       txt2 += "<label id='locationIdLbl'> Location ID </label> <label id='lgLbl'> Type </label> <label id='crntQtyLbl'> Quantity </label> <label id='totalPickedLbl'> Picked </label> <label id='notPickedQuantityLbl'> Allocated </label> <label id='newQuantityLbl'> New Qty </label><br><br>";
+//       var i = 0;
+//       var j = 0;
+//       numProds = 0;
+//       labelHeading.innerHTML = "Part ID : " + response.ex.num;
+//       let length = response.loc.length;
+//       while (i < length) {
+//         txt2 += "<input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled style='font-size:16px; float:left; color:black; padding:7px;'>";
+//         txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.id + "' disabled style='font-size:25px; color:black' hidden>";
+//         txt2 += "<input class='lgClass' value='" + response.loc[i].lg + "' disabled style='font-size:15px; float:left; padding:7px; color:black;'>";
+//         txt2 += "<input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' style='font-size:25px; float:left;' disabled>";
+
+//         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+//         // picked today / have been picked / deducted from the current quantity
+//         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+//         if (response.pickedtoday.length != 0) {
+//           j = response.pickedtoday.length;
+//           let z = 0;
+//           for (let x = 0; x < j; x++) {
+//             if (response.loc[i].locationid == response.pickedtoday[x].locationid) {
+//               txt2 += "<input class='pickedQuantityClass' id='pickedqty' type='text' value='" + response.pickedtoday[x].totalpicked + "' style='font-size:25px; color:black; float:left;' disabled>";
+//               z++;
+//             }
+//           }
+//           if (z == 0) {
+//             txt2 += "<input class='pickedQuantityClass' id='pickedqty' type='text' style='font-size:25px; float:left;' disabled placeholder='0'>";
+//           }
+//         } else {
+//           txt2 += "<input class='pickedQuantityClass' id='pickedqty' type='text' style='font-size:25px; float:left;' disabled placeholder='0'>";
+//         }
+
+//         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+//         // not picked today / allocated / ordered but not yet picked
+//         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+//         if (response.notpickedtoday.length != 0) {
+//           j = response.pickedtoday.length;
+//           let z = 0;
+//           for (let x = 0; x < j; x++) {
+//             if (response.loc[i].locationid == response.notpickedtoday[x].locationid) {
+//               txt2 += "<input class='notPickedQuantityClass' id='notpickedqty' type='text' value='" + response.notpickedtoday[x].qty + "' style='font-size:25px; color:black; float:left;' size='8' disabled>";
+//               z++;
+//             }
+//           }
+//           if (z == 0) {
+//             txt2 += "<input class='notPickedQuantityClass' id='notpickedqty' type='text' style='font-size:25px; float:left;' size='8' disabled placeholder='0'>";
+//           }
+//         } else {
+//           txt2 += "<input class='notPickedQuantityClass' id='notpickedqty' type='text' style='font-size:25px; float:left;' size='8' disabled placeholder='0'>";
+//         }
+//         txt2 += "<input class='newQuantityClass' id='newqty" + i + "' type='text' style='font-size:25px; float:left;' size='8'><br><br>";
+//         numProds++;
+//         i++;
+//       }
+//       document.getElementById("tableDiv").innerHTML = txt2; 
+//       clearField();
+
+// *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+
+// "namor.club/p.php?loc=xxxx&part=xxxx" - the link to get the qty that has been picked but not packed. total qty for last three months, that was picked from the loc and the part was picked. 
+// different url - different response: can we call two fetches at the same time? yeah we can call another function maybe? make the txt2 global so that it will be updated irrespective of the update. 
+// boring 
+
+
+
+// *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+
+// old picked and unpicked link function parts 
+
+        //getPickedUnpicked(document.getElementById()); 
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+        // picked today / have been picked / deducted from the current quantity
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+        // console.log("pickedtoday : " + response.pickedtoday.length);
+        // console.log("notpickedtoday : "+response.notpickedtoday.length);
+        // if (response.pickedtoday.length != 0) {
+        //   j = response.pickedtoday.length;
+        //   let z = 0;
+        //   for (let x = 0; x < j; x++) {
+        //     if (response.loc[i].locationid == response.pickedtoday[x].locationid) {
+        //       txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' value='" + response.pickedtoday[x].totalpicked + "' disabled></td>";
+        //       z++;
+        //     }
+        //   }
+        //   if (z == 0) {
+        //     txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' disabled placeholder='0'></td>";
+        //   }
+        // } else {
+        //   txt2 += "<td><input class='pickedQuantityClass' id='pickedqty' type='text' disabled placeholder='0'></td>";
+        // }
+
+        // //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+        // // not picked today / allocated / ordered but not yet picked
+        // //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+        // if (response.notpickedtoday.length != 0) {
+        //   j = response.pickedtoday.length;
+        //   let z = 0;
+        //   for (let x = 0; x < j; x++) {
+        //     if (response.loc[i].locationid == response.notpickedtoday[x].locationid) {
+        //       txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' value='" + response.notpickedtoday[x].qty + "' disabled></td>";
+        //       z++;
+        //     }
+        //   }
+        //   if (z == 0) {
+        //     txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' disabled placeholder='0'></td>";
+        //   }
+        // } else {
+        //   txt2 += "<td><input class='notPickedQuantityClass' id='notpickedqty' type='text' disabled placeholder='0'></td>";
+        // }
+
+
+      // *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+
+
+
+//********************************************************************************************************************************************************************************************************************************* */
+//   getPickedUnpicked function - shows the row, inserts the picked quantity and unpicked quantity
+//********************************************************************************************************************************************************************************************************************************* */
+
+
+// function getPickedUnpicked(locid, partid) {
+//   document.getElementById("pickedId" + localStorage.getItem("divNo")).innerHTML = "";
+//   document.getElementById("unpickedId" + localStorage.getItem("divNo")).innerHTML = "";
+//   document.getElementById("lastrow" + localStorage.getItem("divNo")).style.display = "none";
+//   localStorage.setItem("divNo", locid);
+//   document.getElementById("lastrow" + locid).style.display = "table-row";
+
+//   var locationid = document.getElementById('locationid' + locid).value;
+//   var partsid = document.getElementById('partid' + partid).value;
+//   console.log("locid : " + locationid);
+//   console.log("partid : " + partsid);
+//   let txt3 = "";
+//   let txt4 = "";
+//   let txt5 = "";
+//   url = "https://namor.club/p.php?loc=" + locationid + "&part=" + partsid;
+//   //console.log("url: " + url)
+//   fetch(url)
+//     .then((response) => {
+//       if (!response.ok) throw new Error("An error occured");
+//       return response.json();
+//     })
+//     .then((response) => {
+//       if (response.totalpicked != null) {
+//         txt3 = "Picked : <input id='picked' type='number' value='" + response.totalpicked + "' style='width:40%;' disabled>";
+//       }
+//       else {
+//         txt3 = "Picked : <input id='picked' type='number' value='0' style='width:40%;' disabled>";
+//       }
+//       if (response.totalnotpicked != null) {
+//         txt4 = "Unpicked : <input id='unpicked' type='number' value='" + response.totalnotpicked + "' style='width:40%;' disabled>";
+//       }
+//       else {
+//         txt4 = "Unpicked : <input id='unpicked' type='number' value='0' style='width:40%;' disabled>";
+//       }
+//       if (response.totalnotpickedwh != null) {
+//         txt5 = "Unpicked WH : <input id='unpicked' type='number' value='" + response.totalnotpickedwh + "' style='width:40%;' disabled>";
+//       }
+//       else {
+//         txt5 = "Unpicked WH : <input id='unpicked' type='number' value='0' style='width:40%;' disabled>";
+//       }
+//       document.getElementById("pickedId" + locid).innerHTML = txt3;
+//       document.getElementById("unpickedId" + locid).innerHTML = txt4;
+//       document.getElementById("unpickedIdWh" + locid).innerHTML = txt5;
+//       //totalnotpickedwh: not picked quantity of the products in the wholesale orders 
+
+//       clearField();
+//     })
+//     .catch((error) => {
+//       console.log(error.message);
+//     });
+// }
+
+
+
+

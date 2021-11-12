@@ -1,4 +1,7 @@
 let txt2 = "";
+let txtx = "";
+let x = 0;
+let y = 0;
 var scans = [];
 var numProds = 0;
 var numLocs = 0;
@@ -57,17 +60,22 @@ const getPartFunctionsUpc = function () {
 }
 
 function getLocationsUpc(abc) {
+  y = 1;
   let txt1 = document.getElementById("outputDiv");
   url = "https://namor.club/p.php?" + abc;
+  localStorage.setItem("abc", url);
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error("An error occured");
       return response.json();
     })
     .then((response) => {
+      document.getElementById("moreBtn").style.display = "block";
+      document.getElementById("moreBtn").innerHTML = "More Locations";
       txt1.innerHTML = "";
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
       txt2 = "";
+      txtx = "";
       txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
       var i = 0;
       var j = 0;
@@ -75,18 +83,30 @@ function getLocationsUpc(abc) {
       labelHeading.innerHTML = "Part ID : " + response.ex.num;
       let length = response.loc.length;
       while (i < length) {
-        txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
-        txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
-        txt2 += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
-        txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
-        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
-        txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
-        txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
-        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='unpickedId" + i + "'></div></td><td colspan='2'><div id='unpickedIdWh" + i  + "'></div></td><td colspan='2'><div id='pickedId" + i + "'></div></td></tr>"
+        if (response.loc[i].qty != 0) {
+          txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
+          txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
+          txt2 += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
+          txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
+          txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
+          txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
+        }
+        else {
+          txtx += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
+          txtx += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
+          txtx += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
+          txtx += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
+          txtx += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
+          txtx += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
+
+        }
         numProds++;
         i++;
       }
       document.getElementById("tableDiv").innerHTML = txt2;
+      if (x == 1) {
+        document.getElementById("moreBtn").setAttribute("onclick", "moreLocations()");
+      }
       clearField();
     })
     .catch((error) => {
@@ -108,6 +128,8 @@ const getPartFunctions = function () {
 }
 
 function getLocations(abc) {
+  y = 1;
+  localStorage.setItem("abc", abc);
   let txt1 = document.getElementById("outputDiv");
   url = abc;
   fetch(url)
@@ -119,6 +141,7 @@ function getLocations(abc) {
       txt1.innerHTML = "";
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
       txt2 = "";
+      txtx = "";
       txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
       var i = 0;
       var j = 0;
@@ -126,76 +149,18 @@ function getLocations(abc) {
       labelHeading.innerHTML = "Part ID : " + response.ex.num;
       let length = response.loc.length;
       while (i < length) {
-        txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
-        txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
-        txt2 += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
-        txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
-        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
-        txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
-        txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
-        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='unpickedId" + i + "'></div></td><td colspan='2'><div id='unpickedIdWh" + i  + "'></div></td><td colspan='2'><div id='pickedId" + i + "'></div></td></tr>"
+        if (response.loc[i].qty != 0) {
+          txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
+          txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
+          txt2 += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
+          txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
+          txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
+          txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
+        }
         numProds++;
         i++;
       }
       document.getElementById("tableDiv").innerHTML = txt2;
-      clearField();
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-}
-
-
-//********************************************************************************************************************************************************************************************************************************* */
-//   getPickedUnpicked function - shows the row, inserts the picked quantity and unpicked quantity
-//********************************************************************************************************************************************************************************************************************************* */
-
-
-function getPickedUnpicked(locid, partid) {
-  document.getElementById("pickedId" + localStorage.getItem("divNo")).innerHTML = "";
-  document.getElementById("unpickedId" + localStorage.getItem("divNo")).innerHTML = "";
-  document.getElementById("lastrow" + localStorage.getItem("divNo")).style.display = "none";
-  localStorage.setItem("divNo", locid);
-  document.getElementById("lastrow" + locid).style.display = "table-row";
-
-  var locationid = document.getElementById('locationid' + locid).value;
-  var partsid = document.getElementById('partid' + partid).value;
-  console.log("locid : " + locationid);
-  console.log("partid : " + partsid);
-  let txt3 = "";
-  let txt4 = "";
-  let txt5 = ""; 
-  url = "https://namor.club/p.php?loc=" + locationid + "&part=" + partsid;
-  //console.log("url: " + url)
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) throw new Error("An error occured");
-      return response.json();
-    })
-    .then((response) => {
-      if (response.totalpicked != null) {
-        txt3 = "Picked : <input id='picked' type='number' value='" + response.totalpicked + "' style='width:40%;' disabled>";        
-      }
-      else {
-        txt3 = "Picked : <input id='picked' type='number' value='0' style='width:40%;' disabled>";
-      }
-      if (response.totalnotpicked != null) {
-        txt4 = "Unpicked : <input id='unpicked' type='number' value='" + response.totalnotpicked + "' style='width:40%;' disabled>";
-      }
-      else {        
-        txt4 = "Unpicked : <input id='unpicked' type='number' value='0' style='width:40%;' disabled>";
-      }
-      if (response.totalnotpickedwh != null) {
-        txt5 = "Unpicked WH : <input id='unpicked' type='number' value='" + response.totalnotpickedwh + "' style='width:40%;' disabled>";
-      }
-      else {        
-        txt5 = "Unpicked WH : <input id='unpicked' type='number' value='0' style='width:40%;' disabled>";
-      }
-      document.getElementById("pickedId" + locid).innerHTML = txt3;
-      document.getElementById("unpickedId" + locid).innerHTML = txt4;
-      document.getElementById("unpickedIdWh" + locid).innerHTML = txt5;
-      //totalnotpickedwh: not picked quantity of the products in the wholesale orders 
-      
       clearField();
     })
     .catch((error) => {
@@ -228,6 +193,7 @@ function getParts(abc) {
     .then((response) => {
       txt1.innerHTML = "";
       txt2 = "";
+      txtx = ""; 
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='locationUpdate()'> Update </button><br>";
       txt2 = "<table><th id='productIdLbl'> Product ID </th> <th id='currentQuantityLbl' style='width:100%;'> Current&nbsp;Quantity </th> <th id='quantityLbl'> Quantity </th>";
       var i = 0;
@@ -235,14 +201,22 @@ function getParts(abc) {
       labelHeading.innerHTML = "Location ID : " + response.name;
       let length = response.parts.length;
       while (i < length) {
+        if (response.parts[i].qty != 0) {
         txt2 += "<tr><td><a class='partIdClass' id='partid" + i + "' type='text' onclick='getLocationsAgain(" + i + ");'>" + response.parts[i].num + "</a></td>";
         txt2 += "<input id='locid" + i + "' type='text' value='" + response.id + "' disabled hidden>";
         txt2 += "<td><input class='partQuantityClass' id='partqty" + i + "' type='text' value='" + response.parts[i].qty + "' disabled ></td>";
         txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td></tr>";
+      }
+      else{
+        txtx += "<tr><td><a class='partIdClass' id='partid" + i + "' type='text' onclick='getLocationsAgain(" + i + ");'>" + response.parts[i].num + "</a></td>";
+        txtx += "<input id='locid" + i + "' type='text' value='" + response.id + "' disabled hidden>";
+        txtx += "<td><input class='partQuantityClass' id='partqty" + i + "' type='text' value='" + response.parts[i].qty + "' disabled ></td>";
+        txtx += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td></tr>";        
+      }
         numLocs++;
         i++;
       }
-      document.getElementById("tableDiv").innerHTML = txt2;
+      document.getElementById("tableDiv").innerHTML = txt2 + txtx;
       clearField();
     })
     .catch((error) => {
@@ -257,11 +231,14 @@ function getParts(abc) {
 
 
 function getLocationsAgain(xyz) {
+  localStorage.setItem("xyz", xyz);
+  y = 2;
   var partid = document.getElementById("partid" + xyz).innerHTML;
   let txt1 = document.getElementById("outputDiv");
   let txt2 = "";
-  console.log("partid: " + partid); 
+  console.log("partid: " + partid);
   url = "https://namor.club/p.php?" + partid;
+  localStorage.setItem("abc", url);
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error("An error occured");
@@ -272,6 +249,7 @@ function getLocationsAgain(xyz) {
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='getPartsAgain()'> Back </button><br>";
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
       txt2 = "";
+      txtx = "";
       txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
       var i = 0;
       var j = 0;
@@ -279,18 +257,26 @@ function getLocationsAgain(xyz) {
       labelHeading.innerHTML = "Part ID : " + response.ex.num;
       let length = response.loc.length;
       while (i < length) {
-        txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
-        txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
-        txt2 += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
-        txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
-        txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
-        txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
-        txt2 += "<td><button class='waves-effect waves-light btn' onclick='getPickedUnpicked(" + i + ", " + i + ")'> More </button></td></tr>";
-        txt2 += "<tr class='lastrow' id='lastrow" + i + "' style='display:none;'><td colspan='2'><div id='unpickedId" + i + "'></div></td><td colspan='2'><div id='unpickedIdWh" + i  + "'></div></td><td colspan='2'><div id='pickedId" + i + "'></div></td></tr>"
+        if (response.loc[i].qty != 0) {
+          txt2 += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
+          txt2 += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
+          txt2 += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
+          txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
+          txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
+          txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
+        }
+        else {
+          txtx += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
+          txtx += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
+          txtx += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
+          txtx += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
+          txtx += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
+          txtx += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
+        }
         numProds++;
         i++;
       }
-      document.getElementById("tableDiv").innerHTML = txt2;
+      document.getElementById("tableDiv").innerHTML = txt2 + txtx;    
       clearField();
     })
     .catch((error) => {
@@ -414,7 +400,7 @@ function locationUpdate(locid, partid, newqty) {
 //   CLEAR FIELDS AND EVERYTHING BUTTON 
 //********************************************************************************************************************************************************************************************************************************* */
 
-
+//executes when clear button is presses
 function clearData() {
   let txt1 = document.getElementById("outputDiv");
   txt1.innerHTML = "";
@@ -422,12 +408,15 @@ function clearData() {
   idScan.value = "";
   idScan.value = "";
   labelHeading.innerHTML = "- - - - -";
+  location.reload();
 }
+
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 //  clearField: clears the idScan after every scan and after executing every function 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
+// executes after inner functions execution 
 const clearField = function () {
   idScan.value = "";
 }
@@ -437,12 +426,8 @@ const clearField = function () {
 //  changeCss function - change the theme to dark and reprogram the button to function to light mode 
 //********************************************************************************************************************************************************************************************************************************* */
 
-
+// changes the theme on the app from light to dark 
 function changeCss(cssFile) {
-  console.log("cssfile : " + cssFile);
-  //console.log("csslinkindex : " + cssLinkIndex); 
-  console.log("darkTheme was toggled");
-
   var stylesheet = document.getElementById("stylesheet");
   stylesheet.setAttribute('href', cssFile);
   document.getElementById("darkButton").setAttribute("onClick", "javascript: changeCssAgain('src/style.css');");
@@ -454,12 +439,8 @@ function changeCss(cssFile) {
 //  changeCssAgain function - change the theme back to light and start a looping function to change the theme light and dark 
 //********************************************************************************************************************************************************************************************************************************* */
 
-
+//changes the theme on the app from dark to light 
 function changeCssAgain(cssFile) {
-  console.log("cssfile : " + cssFile);
-  //console.log("csslinkindex : " + cssLinkIndex); 
-  console.log("darkTheme was toggled");
-
   var stylesheet = document.getElementById("stylesheet");
   stylesheet.setAttribute('href', cssFile);
   document.getElementById("darkButton").setAttribute("onClick", "javascript: changeCss('src/darkThemeStyle.css');");
@@ -684,8 +665,66 @@ function changeCssAgain(cssFile) {
         // }
 
 
-
       // *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
+
+
+
+//********************************************************************************************************************************************************************************************************************************* */
+//   getPickedUnpicked function - shows the row, inserts the picked quantity and unpicked quantity
+//********************************************************************************************************************************************************************************************************************************* */
+
+
+// function getPickedUnpicked(locid, partid) {
+//   document.getElementById("pickedId" + localStorage.getItem("divNo")).innerHTML = "";
+//   document.getElementById("unpickedId" + localStorage.getItem("divNo")).innerHTML = "";
+//   document.getElementById("lastrow" + localStorage.getItem("divNo")).style.display = "none";
+//   localStorage.setItem("divNo", locid);
+//   document.getElementById("lastrow" + locid).style.display = "table-row";
+
+//   var locationid = document.getElementById('locationid' + locid).value;
+//   var partsid = document.getElementById('partid' + partid).value;
+//   console.log("locid : " + locationid);
+//   console.log("partid : " + partsid);
+//   let txt3 = "";
+//   let txt4 = "";
+//   let txt5 = "";
+//   url = "https://namor.club/p.php?loc=" + locationid + "&part=" + partsid;
+//   //console.log("url: " + url)
+//   fetch(url)
+//     .then((response) => {
+//       if (!response.ok) throw new Error("An error occured");
+//       return response.json();
+//     })
+//     .then((response) => {
+//       if (response.totalpicked != null) {
+//         txt3 = "Picked : <input id='picked' type='number' value='" + response.totalpicked + "' style='width:40%;' disabled>";
+//       }
+//       else {
+//         txt3 = "Picked : <input id='picked' type='number' value='0' style='width:40%;' disabled>";
+//       }
+//       if (response.totalnotpicked != null) {
+//         txt4 = "Unpicked : <input id='unpicked' type='number' value='" + response.totalnotpicked + "' style='width:40%;' disabled>";
+//       }
+//       else {
+//         txt4 = "Unpicked : <input id='unpicked' type='number' value='0' style='width:40%;' disabled>";
+//       }
+//       if (response.totalnotpickedwh != null) {
+//         txt5 = "Unpicked WH : <input id='unpicked' type='number' value='" + response.totalnotpickedwh + "' style='width:40%;' disabled>";
+//       }
+//       else {
+//         txt5 = "Unpicked WH : <input id='unpicked' type='number' value='0' style='width:40%;' disabled>";
+//       }
+//       document.getElementById("pickedId" + locid).innerHTML = txt3;
+//       document.getElementById("unpickedId" + locid).innerHTML = txt4;
+//       document.getElementById("unpickedIdWh" + locid).innerHTML = txt5;
+//       //totalnotpickedwh: not picked quantity of the products in the wholesale orders 
+
+//       clearField();
+//     })
+//     .catch((error) => {
+//       console.log(error.message);
+//     });
+// }
 
 
 
