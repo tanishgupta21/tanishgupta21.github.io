@@ -1,4 +1,4 @@
-alert("welcome!");
+
 let txt2 = "";
 let txtx = "";
 let x = 0;
