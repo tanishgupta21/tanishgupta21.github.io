@@ -1,8 +1,10 @@
 
 let txt2 = "";
 let txtx = "";
+let txty = "";
 let x = 0;
 let y = 0;
+let m = 0;
 var scans = [];
 var numProds = 0;
 var numLocs = 0;
@@ -10,7 +12,7 @@ var scannedId;
 var searchTimeout; //8032,4202,4809
 const idScan = document.getElementById("idScan");
 const labelHeading = document.getElementById("labelHeading");
-localStorage.setItem("divNo", 0);
+
 
 //********************************************************************************************************************************************************************************************************************************* */
 //   Typing check function - check when the user has stopped typing in the input field and calls first function when the user stops 
@@ -44,7 +46,6 @@ const firstfunction = function () {
       //call the location fucnctions
       getLocationFunctions();
     }
-
   }
 }
 
@@ -71,12 +72,9 @@ function getLocationsUpc(abc) {
       return response.json();
     })
     .then((response) => {
-      document.getElementById("moreBtn").style.display = "block";
-      document.getElementById("moreBtn").innerHTML = "More Locations";
       txt1.innerHTML = "";
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
       txt2 = "";
-      txtx = "";
       txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
       var i = 0;
       var j = 0;
@@ -91,15 +89,6 @@ function getLocationsUpc(abc) {
           txt2 += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
           txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
           txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
-        }
-        else {
-          txtx += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
-          txtx += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
-          txtx += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
-          txtx += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
-          txtx += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
-          txtx += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
-
         }
         numProds++;
         i++;
@@ -194,7 +183,7 @@ function getParts(abc) {
     .then((response) => {
       txt1.innerHTML = "";
       txt2 = "";
-      txtx = ""; 
+      txtx = "";
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='locationUpdate()'> Update </button><br>";
       txt2 = "<table><th id='productIdLbl'> Product ID </th> <th id='currentQuantityLbl' style='width:100%;'> Current&nbsp;Quantity </th> <th id='quantityLbl'> Quantity </th>";
       var i = 0;
@@ -202,22 +191,28 @@ function getParts(abc) {
       labelHeading.innerHTML = "Location ID : " + response.name;
       let length = response.parts.length;
       while (i < length) {
-        if (response.parts[i].qty != 0) {
-        txt2 += "<tr><td><a class='partIdClass' id='partid" + i + "' type='text' onclick='getLocationsAgain(" + i + ");'>" + response.parts[i].num + "</a></td>";
-        txt2 += "<input id='locid" + i + "' type='text' value='" + response.id + "' disabled hidden>";
-        txt2 += "<td><input class='partQuantityClass' id='partqty" + i + "' type='text' value='" + response.parts[i].qty + "' disabled ></td>";
-        txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td></tr>";
-      }
-      else{
-        txtx += "<tr><td><a class='partIdClass' id='partid" + i + "' type='text' onclick='getLocationsAgain(" + i + ");'>" + response.parts[i].num + "</a></td>";
-        txtx += "<input id='locid" + i + "' type='text' value='" + response.id + "' disabled hidden>";
-        txtx += "<td><input class='partQuantityClass' id='partqty" + i + "' type='text' value='" + response.parts[i].qty + "' disabled ></td>";
-        txtx += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td></tr>";        
-      }
+        if (response.parts[i].qty != 0) { // shows the parts with quantity more than 0 first than shows the products with quantities 0 
+          txt2 += "<tr><td><a class='partIdClass' id='partid" + i + "' type='text' onclick='getLocationsAgain(" + i + ");'>" + response.parts[i].num + "</a></td>";
+          txt2 += "<input id='locid" + i + "' type='text' value='" + response.id + "' disabled hidden>";
+          txt2 += "<td><input class='partQuantityClass' id='partqty" + i + "' type='text' value='" + response.parts[i].qty + "' disabled ></td>";
+          txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td></tr>";
+        }
+        else {
+          txtx += "<tr><td><a class='partIdClass' id='partid" + i + "' type='text' onclick='getLocationsAgain(" + i + ");'>" + response.parts[i].num + "</a></td>";
+          txtx += "<input id='locid" + i + "' type='text' value='" + response.id + "' disabled hidden>";
+          txtx += "<td><input class='partQuantityClass' id='partqty" + i + "' type='text' value='" + response.parts[i].qty + "' disabled ></td>";
+          txtx += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td></tr>";
+        }
         numLocs++;
         i++;
       }
-      document.getElementById("tableDiv").innerHTML = txt2 + txtx;
+      m = 0;
+      txty = "<tr id='tr" + m + "'><td><input class='newProduct' id='newProduct' placeholder='Part ID'/></td>";
+      txty += "<td><input class='newProductQty' id='newProductQty' placeholder='Quantity'  type='number'/></td>";
+      txty += "<td><button id='addBtn'  class='waves-effect waves-light btn' onclick='addProduct()'> Add </button></td></tr></table>";
+      m++;
+      console.log("m : " + m);
+      document.getElementById("tableDiv").innerHTML = txt2 + txtx + txty;
       clearField();
     })
     .catch((error) => {
@@ -225,6 +220,73 @@ function getParts(abc) {
     });
 }
 
+
+//********************************************************************************************************************************************************************************************************************************* */
+//   function - addProduct function to add a new product ot the location which wasn't there before. makes the initial adding row disappear and creates a new row to add another product if needed
+//********************************************************************************************************************************************************************************************************************************* */
+
+
+async function addProduct() {
+  // console.log("m in func : " + (m - 1))
+  let txtz = "";
+  var locationID = document.getElementById('locid1').value;
+  var newPartID = document.getElementById('newProduct').value;
+  var newPartQty = document.getElementById('newProductQty').value;
+  var partNum = "";
+  const url = "https://namor.club/p.php";
+  if (newPartID.length == 0) {
+    if (newPartQty.length == 0) {
+      alert("Please enter valid details before adding.");
+      console.log("if was executed");
+    }
+  } else {
+    console.log("newpartid : " + newPartID); 
+    let url2 = "https://namor.club/p.php?" + newPartID; 
+    await fetch(url2)
+      .then((response) => {
+        if (!response.ok) throw new Error("An error occured");
+        return response.json();
+      })
+      .then((response) => {
+        console.log(response)
+        partNum = response.ex.id;
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+    
+    let data = {
+      cycle: 1,
+      locationid: locationID,
+      partid: partNum,
+      qty: newPartQty
+    }
+    console.log("locationid : " + data.locationid); 
+    console.log("partNum : " + data.partid); 
+    console.log("qty : " + data.qty); 
+    let fetchData = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: new Headers()
+    }
+    console.log(fetchData.body[0]);
+    fetch(url, fetchData)
+      .catch((error) => {
+        console.log(error);
+      })
+
+
+    document.getElementById("tr" + (m - 1)).outerHTML = "";
+    txtz = "<tr id='tr" + (m - 1) + "'><td><a class='newProduct' id='partid'>" + newPartID + "</a></td>";
+    txtz += "<td><input class='newProductQty' id='partqty' value='" + newPartQty + "' disabled/></td>";
+    txtz += "<td><input class='newQuantityClass' id='newaddqty" + m + "' type='number'></td></tr>";
+    txtz += "<tr id='tr" + m + "'><td><input class='newProduct' id='newProduct' placeholder='Part ID'/></td>";
+    txtz += "<td><input class='newProductQty' id='newProductQty' type='number' placeholder='Quantity'/></td>";
+    txtz += "<td><button id='addBtn'  class='waves-effect waves-light btn' onclick='addProduct()'> Add </button></td></tr>";
+    m++;
+    document.getElementById("tableDiv").children[0].innerHTML += txtz;
+  }
+}
 
 //********************************************************************************************************************************************************************************************************************************* */
 //   function - getLocationsAgain - calls the getLocations function when you click on the product links on the locations page, attached to locationFunction page. 
@@ -250,7 +312,6 @@ function getLocationsAgain(xyz) {
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='getPartsAgain()'> Back </button><br>";
       txt1.innerHTML += "<button class='waves-effect waves-light btn' onclick='partUpdate()'> Update </button>";
       txt2 = "";
-      txtx = "";
       txt2 += "<table><tr><th id='locationIdLbl'> Location ID </th> <th id='lgLbl'> Type </th> <th id='crntQtyLbl'> Quantity </th> <th id='totalPickedLbl'> New Qty </th> <th id='notPickedQuantityLbl'>  </th> <th id='newQuantityLbl'></th></tr>";
       var i = 0;
       var j = 0;
@@ -266,18 +327,10 @@ function getLocationsAgain(xyz) {
           txt2 += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
           txt2 += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
         }
-        else {
-          txtx += "<tr><td><input class='locationIdClass' id='locid" + i + "' type='text' value='" + response.loc[i].loc + "' disabled></td>";
-          txtx += "<input id='partid" + i + "' type='text' value='" + response.ex.num + "' disabled hidden>";
-          txtx += "<input id='locationid" + i + "' type='text' value='" + response.loc[i].locationid + "' disabled hidden>";
-          txtx += "<td><input class='lgClass' value='" + response.loc[i].lg + "' disabled></td>";
-          txtx += "<td><input class='locationQuantityClass' id='locqty" + i + "' type'text' value='" + response.loc[i].qty + "' disabled></td>";
-          txtx += "<td><input class='newQuantityClass' id='newqty" + i + "' type='number'></td>";
-        }
         numProds++;
         i++;
       }
-      document.getElementById("tableDiv").innerHTML = txt2 + txtx;    
+      document.getElementById("tableDiv").innerHTML = txt2;
       clearField();
     })
     .catch((error) => {
@@ -410,6 +463,7 @@ function clearData() {
   idScan.value = "";
   labelHeading.innerHTML = "- - - - -";
   location.reload();
+  localStorage.clear();
 }
 
 
@@ -545,9 +599,6 @@ function changeCssAgain(cssFile) {
 
 
 // *-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-**-*-* */
-
-
-
 
 
 

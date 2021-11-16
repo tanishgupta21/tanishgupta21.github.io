@@ -51,6 +51,15 @@
             "locationid": 5641
         }
     ],
+    "cycle": [
+        {
+            "id": 3,
+            "partid": 15283,
+            "locationid": 2006,
+            "qty": 2,
+            "date_modified": "2021-11-16 14:26:44"
+        }
+    ],
     "locs": [
         {
             "id": 2006,
