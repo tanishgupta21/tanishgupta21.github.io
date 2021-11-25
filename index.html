@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title> Max Advanced Brakes </title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./materialize-admin/app-assets/css/themes/horizontal-menu-template/materialize.css" />
-    <link rel="stylesheet" id="stylesheet" href="src/style.css" />    
-  </head>
-  <body>
-    <div id="container">
-      <header id="headerDiv" class="card-panel">
-        <h1> Cycle Count </h1>
-        <br>
-        <input id="idScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Location/Product ID"
-          onkeyup="typingCheck()" onfocus="this.value=''" autofocus />
-      </header>
+
+<head>
+  <title> Max Advanced Brakes </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./materialize-admin/app-assets/css/themes/horizontal-menu-template/materialize.css" />
+  <link rel="stylesheet" id="stylesheet" href="src/style.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header id="headerDiv" class="card-panel">
+      <h1> Cycle Count </h1>
       <br>
-      <div class="card">
-        <h4 id="labelHeading">- - - - -</h4>
-      </div>
-      <br>
-      <div id="outputDiv"></div>
-      <br>
-      <div id="tableDiv" class="card-panel"></div>
-      <br>
-      <div class="btn-group">        
-        <button class='waves-effect waves-light btn'  id="btn3" onclick="clearData()"> Clear </button> <br>
-        <button  class='waves-effect waves-light btn' id="darkButton" onclick="changeCss('src/darkThemeStyle.css');"> Dark Theme </button>
-      </div>
+      <input id="idScan" type="text" rows="2" cols="15" font-size="30px" placeholder="Location/Product ID"
+        onkeyup="typingCheck()" onfocus="this.value=''" autofocus />
+    </header>
+    <br>
+    <div class="card">
+      <h4 id="labelHeading">- - - - -</h4>
     </div>
-    <script src="./src/app.js" type="application/javascript"></script>
-    <script src="./materialize-admin/src/js/materialize.js" type="text/javascript"></script>
-  </body>
+    <br>
+    <div id="loaderContainer">
+      <div id="loader" class="loader"></div>
+    </div>
+    <br>
+    <div id="outputDiv"></div>
+    <br>
+    <table id="tableDiv" class="card-panel"></table>
+    <br>
+
+    <div class="btn-group">
+      <button class='waves-effect waves-light btn' id="btn3" onclick="clearData()"> Clear </button> <br>
+      <button class='waves-effect waves-light btn' id="darkButton" onclick="changeCss('src/darkThemeStyle.css');"> Dark
+        Theme </button>
+    </div>
+  </div>
+  <script src="./src/app.js" type="application/javascript"></script>
+  <script src="./materialize-admin/src/js/materialize.js" type="text/javascript"></script>
+</body>
+
 </html>
 
 
@@ -68,7 +77,10 @@
   - jonah requirements for inventory :-  
    - to see the products which have been picked - on the same location 
    - to see the products which are to be picked - on the same location 
-   - and the original quantity 
+   - and the original quantity
+   
+
+   @Tanish POST to namor.club/p.php {cycle:1, locationid:xxx, partid:xxx, qty:xxx}
 
 
 -->

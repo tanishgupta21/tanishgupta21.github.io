@@ -1,11 +1,11 @@
 {
     "status": "OK",
     "ex": {
-        "id": 1867,
-        "num": "R31308ONZ",
-        "des": "Premium OE Rotor",
-        "variantid": 4,
-        "typeid": 1,
+        "id": 42,
+        "num": "P1037CDM",
+        "des": "CDM BRAKE PADS",
+        "variantid": 5,
+        "typeid": 2,
         "vendorid": null,
         "cost": null,
         "deflocid": null,
@@ -15,192 +15,302 @@
         "mavg": 0,
         "deflocal": null,
         "active": 1,
-        "weight_lbs": "12.57",
+        "weight_lbs": "1.44",
         "origin": null,
-        "costid": 1251,
+        "costid": 9267,
         "name": null,
         "lgid": null
     },
-    "inter": [
-        {
-            "inter": "ONZ0130",
-            "des": "MAX",
-            "partid": 1867
-        }
-    ],
     "upc": [
         {
-            "upc": "665083110574"
-        },
-        {
-            "upc": "702669002240"
-        },
-        {
-            "upc": "809225032175"
+            "upc": "665083145651"
         }
     ],
     "loc": [
         {
-            "id": 9213,
-            "locationid": 1445,
-            "qty": 14,
-            "loc": "2434 : A11 : 09 : 3R",
+            "id": 165099,
+            "locationid": 33,
+            "qty": 0,
+            "loc": "1022 : A01 : 03 : 2L",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 128242,
+            "locationid": 7510,
+            "qty": 0,
+            "loc": "20-10-5R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 152378,
+            "locationid": 7545,
+            "qty": 0,
+            "loc": "20-11-7R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 165166,
+            "locationid": 7531,
+            "qty": 45,
+            "loc": "20-12-6R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 61343,
+            "locationid": 7463,
+            "qty": 0,
+            "loc": "21-04-6L",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 183242,
+            "locationid": 7409,
+            "qty": 100,
+            "loc": "21-10-6R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 61344,
+            "locationid": 7412,
+            "qty": 0,
+            "loc": "21-11-4R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 170887,
+            "locationid": 7485,
+            "qty": 0,
+            "loc": "21-11-5R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 96789,
+            "locationid": 7488,
+            "qty": 72,
+            "loc": "21-13-6L",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 136235,
+            "locationid": 7429,
+            "qty": 0,
+            "loc": "22-01-4R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 96788,
+            "locationid": 7417,
+            "qty": 132,
+            "loc": "22-01-5R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 96787,
+            "locationid": 7481,
+            "qty": 0,
+            "loc": "22-02-6R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 72600,
+            "locationid": 7610,
+            "qty": 0,
+            "loc": "22-09-6L",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 72232,
+            "locationid": 7605,
+            "qty": 0,
+            "loc": "22-10-5L",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 167488,
+            "locationid": 7589,
+            "qty": 80,
+            "loc": "22-12-5L",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 166255,
+            "locationid": 7623,
+            "qty": 60,
+            "loc": "24-10-5R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 136305,
+            "locationid": 7771,
+            "qty": 0,
+            "loc": "24-12-5R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 152590,
+            "locationid": 7622,
+            "qty": 100,
+            "loc": "24-13-5L",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 137742,
+            "locationid": 7717,
+            "qty": 0,
+            "loc": "24-13-6R",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 56199,
+            "locationid": 7267,
+            "qty": 0,
+            "loc": "cancelation",
             "lg": "WAREHOUSE"
         },
         {
-            "id": 51466,
-            "locationid": 5080,
-            "qty": 0,
-            "loc": "2434 : A11 : 09 : 3R",
+            "id": 40412,
+            "locationid": 7296,
+            "qty": 1,
+            "loc": "Pads Location",
             "lg": "LOCAL PURCHASE"
+        },
+        {
+            "id": 40411,
+            "locationid": 11,
+            "qty": 227,
+            "loc": "Pads Location",
+            "lg": "WAREHOUSE"
+        },
+        {
+            "id": 70774,
+            "locationid": 2673,
+            "qty": 0,
+            "loc": "Pads Restock",
+            "lg": "RESTOCK"
+        },
+        {
+            "id": 150636,
+            "locationid": 3,
+            "qty": 0,
+            "loc": "Receiving",
+            "lg": "WAREHOUSE"
         }
     ],
     "landed": {
-        "costusd": "8.59",
-        "costcad": "10.31"
+        "costusd": "4.34",
+        "costcad": "5.35"
     },
     "partcat": false,
     "fifo": {
-        "id": 1251,
-        "created": "2021-06-08 19:58:26",
-        "poitemid": null,
-        "updated": "2021-10-21 11:00:03",
-        "partid": 1867,
-        "qty": 24,
-        "qty_left": 14,
-        "finished": null,
+        "id": 9267,
+        "created": "2021-06-28 10:36:04",
+        "poitemid": 22027,
+        "updated": "2021-11-22 11:26:42",
+        "partid": 42,
+        "qty": 180,
+        "qty_left": 0,
+        "finished": "2021-11-22 11:26:42",
         "cost_cad_part": null,
         "cost_cad_freight": "0.00",
         "cost_cad_customs": "0.00",
-        "cost_cad_final_per": "11.16",
-        "cost_usd_final_per": "8.59",
+        "cost_cad_final_per": "5.28",
+        "cost_usd_final_per": "4.35",
         "container": null,
-        "code": null,
+        "code": "MAX2109",
         "uploaded": null
     },
     "fifolist": [
         {
-            "id": 1251,
-            "created": "2021-06-08 19:58:26",
-            "poitemid": null,
-            "updated": "2021-10-21 11:00:03",
-            "partid": 1867,
-            "qty": 24,
-            "qty_left": 14,
+            "id": 10951,
+            "created": "2021-08-23 16:43:02",
+            "poitemid": 27041,
+            "updated": "2021-08-23 16:43:02",
+            "partid": 42,
+            "qty": 170,
+            "qty_left": 170,
             "finished": null,
             "cost_cad_part": null,
             "cost_cad_freight": "0.00",
             "cost_cad_customs": "0.00",
-            "cost_cad_final_per": "11.16",
-            "cost_usd_final_per": "8.59",
+            "cost_cad_final_per": "5.95",
+            "cost_usd_final_per": "4.63",
             "container": null,
-            "code": null,
+            "code": "MAX2112",
+            "uploaded": null
+        },
+        {
+            "id": 10972,
+            "created": "2021-08-23 16:43:02",
+            "poitemid": 27062,
+            "updated": "2021-08-23 16:43:02",
+            "partid": 42,
+            "qty": 100,
+            "qty_left": 100,
+            "finished": null,
+            "cost_cad_part": null,
+            "cost_cad_freight": "0.00",
+            "cost_cad_customs": "0.00",
+            "cost_cad_final_per": "5.95",
+            "cost_usd_final_per": "4.63",
+            "container": null,
+            "code": "MAX2112",
+            "uploaded": null
+        },
+        {
+            "id": 12232,
+            "created": "2021-09-22 09:39:05",
+            "poitemid": 29885,
+            "updated": "2021-09-22 09:39:05",
+            "partid": 42,
+            "qty": 100,
+            "qty_left": 100,
+            "finished": null,
+            "cost_cad_part": null,
+            "cost_cad_freight": "0.00",
+            "cost_cad_customs": "0.00",
+            "cost_cad_final_per": "6.39",
+            "cost_usd_final_per": "4.99",
+            "container": null,
+            "code": "MAX21-15",
+            "uploaded": null
+        },
+        {
+            "id": 12387,
+            "created": "2021-09-27 09:41:17",
+            "poitemid": 30249,
+            "updated": "2021-09-27 09:41:17",
+            "partid": 42,
+            "qty": 200,
+            "qty_left": 200,
+            "finished": null,
+            "cost_cad_part": null,
+            "cost_cad_freight": "0.00",
+            "cost_cad_customs": "0.00",
+            "cost_cad_final_per": "6.36",
+            "cost_usd_final_per": "5.02",
+            "container": null,
+            "code": "MAX21-14",
+            "uploaded": null
+        },
+        {
+            "id": 12856,
+            "created": "2021-11-08 12:57:33",
+            "poitemid": 32611,
+            "updated": "2021-11-08 12:57:33",
+            "partid": 42,
+            "qty": 100,
+            "qty_left": 100,
+            "finished": null,
+            "cost_cad_part": null,
+            "cost_cad_freight": "0.00",
+            "cost_cad_customs": "0.00",
+            "cost_cad_final_per": "6.22",
+            "cost_usd_final_per": "4.99",
+            "container": null,
+            "code": "MAX21-17",
             "uploaded": null
         }
     ],
     "cycle": [],
-    "cyclecheck": [
-        {
-            "id": 11,
-            "locid": 1445,
-            "partid": 1867,
-            "rawloc": "0",
-            "rawpart": "32",
-            "scanned": "2021-10-19 16:36:10",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 12,
-            "locid": 5080,
-            "partid": 1867,
-            "rawloc": "0",
-            "rawpart": "12",
-            "scanned": "2021-10-19 16:36:10",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 13,
-            "locid": 1445,
-            "partid": 1867,
-            "rawloc": "0",
-            "rawpart": "32",
-            "scanned": "2021-10-19 16:36:39",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 14,
-            "locid": 5080,
-            "partid": 1867,
-            "rawloc": "0",
-            "rawpart": "0",
-            "scanned": "2021-10-19 16:36:39",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 15,
-            "locid": 1445,
-            "partid": 1867,
-            "rawloc": "0",
-            "rawpart": "12",
-            "scanned": "2021-10-19 16:37:50",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 16,
-            "locid": 5080,
-            "partid": 1867,
-            "rawloc": "0",
-            "rawpart": "32",
-            "scanned": "2021-10-19 16:37:50",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 17,
-            "locid": 5080,
-            "partid": 1867,
-            "rawloc": "0",
-            "rawpart": "32",
-            "scanned": "2021-10-19 16:37:50",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 18,
-            "locid": 1445,
-            "partid": 1867,
-            "rawloc": "0",
-            "rawpart": "12",
-            "scanned": "2021-10-19 16:37:50",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 23,
-            "locid": 5080,
-            "partid": 1867,
-            "rawloc": "0",
-            "rawpart": "12",
-            "scanned": "2021-10-20 10:26:42",
-            "ip": "0",
-            "user": null
-        },
-        {
-            "id": 24,
-            "locid": 1445,
-            "partid": 1867,
-            "rawloc": "0",
-            "rawpart": "32",
-            "scanned": "2021-10-20 10:26:42",
-            "ip": "0",
-            "user": null
-        }
-    ],
-    "pickedtoday": [],
-    "notpickedtoday": []
+    "cyclecheck": []
 }

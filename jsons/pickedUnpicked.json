@@ -1,0 +1,72 @@
+{
+    "totalpicked": "9",
+    "totalnotpicked": "3",
+    "totalnotpickedwh": "13",
+    "data": [
+        {
+            "qtypicked": 1,
+            "picked": "2021-10-25 08:57:51",
+            "orderid": 185254985
+        },
+        {
+            "qtypicked": 1,
+            "picked": "2021-10-26 09:24:09",
+            "orderid": 185402262
+        },
+        {
+            "qtypicked": 0,
+            "picked": null,
+            "orderid": 40029056
+        },
+        {
+            "qtypicked": 0,
+            "picked": null,
+            "orderid": 40029221
+        },
+        {
+            "qtypicked": 1,
+            "picked": "2021-11-15 08:12:36",
+            "orderid": 40029564
+        },
+        {
+            "qtypicked": 1,
+            "picked": "0000-00-00 00:00:00",
+            "orderid": 187285747
+        },
+        {
+            "qtypicked": 1,
+            "picked": "2021-11-22 08:16:24",
+            "orderid": 187297804
+        },
+        {
+            "qtypicked": 0,
+            "picked": null,
+            "orderid": 187470723
+        },
+        {
+            "qtypicked": 1,
+            "picked": "2021-11-22 09:03:10",
+            "orderid": 187367265
+        },
+        {
+            "qtypicked": 1,
+            "picked": "2021-11-22 09:03:10",
+            "orderid": 187370974
+        },
+        {
+            "qtypicked": 1,
+            "picked": "0000-00-00 00:00:00",
+            "orderid": 187344613
+        },
+        {
+            "qtypicked": 1,
+            "picked": "2021-11-22 09:17:10",
+            "orderid": 187339565
+        },
+        {
+            "qtypicked": 0,
+            "picked": null,
+            "orderid": 187454788
+        }
+    ]
+}
